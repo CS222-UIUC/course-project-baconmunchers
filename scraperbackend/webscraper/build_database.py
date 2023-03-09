@@ -2,15 +2,7 @@ import requests
 import re
 from bs4 import BeautifulSoup
 import json
-
-classes = {}
-
-#read classes from ClassLinks.txt
-with open("ClassLinks.txt", 'r') as file:
-	subject_count = int(file.readline())
-	for _ in range(subject_count):
-		subject_code, class_count = file.readline().split()
-		classes[subject_code] = [file.readline()[:-1] for _ in range(int(class_count))]
+import mysql.connector
 
 
 def get_sections_from_class(link):
@@ -64,3 +56,47 @@ def get_sections_from_class(link):
 # 	['67938', '12:00PM', '12:50PM', 'F', 'n.a', 'n.a'], 
 # 	['63464', 'ARRANGED', 'ARRANGED', 'n.a.', 'n.a', 'n.a']
 # ]
+
+
+#take a section given by get_sections_from_class and add it to the MySQL database.
+def input_into_MySQL_database(section):
+	pass
+	"""conn = mysql.connector.connect(
+				   user='root', password='dAta4Cs22SmySQ', host='127.0.0.1', database='mydb')
+			
+				cursor = conn.cursor()
+			
+				insert_stmt = (
+				   "INSERT INTO DATA(CRN, TIME_START, TIME_END, DAY, LOCATION, ROOM_NUMBER)"
+				   "VALUES (%s, %s, %s, %s, %s, %s)"
+				)
+			
+				data = (crn, time_start, time_end,day,location,room_number)
+			
+				try:
+				   cursor.execute(insert_stmt, data)
+				   conn.commit()
+			
+				except:
+				   conn.rollback()
+			
+				print("Data inserted")
+			
+				conn.close()"""
+
+classes = {}
+
+#read classes from ClassLinks.txt
+with open("ClassLinks.txt", 'r') as file:
+	subject_count = int(file.readline())
+	for _ in range(subject_count):
+		subject_code, class_count = file.readline().split()
+		classes[subject_code] = [file.readline()[:-1] for _ in range(int(class_count))]
+
+
+#input every class section into MySQL Database
+for subject_code in classes:
+	for link in classes[subject_code]:
+		sections = get_sections_from_class(link)
+		for sections in sections:
+			input_into_MySQL_database(section)
