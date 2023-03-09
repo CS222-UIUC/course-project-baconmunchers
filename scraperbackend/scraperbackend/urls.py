@@ -23,4 +23,5 @@ router.register(r'ClassInfos', views.ClassInfoView, 'ClassInfo')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('classes/', include('scraperapp.urls')),
 ]
