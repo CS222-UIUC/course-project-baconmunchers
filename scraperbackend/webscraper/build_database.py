@@ -8,10 +8,16 @@ import mysql.connector
 def get_sections_from_class(link):
 	class_page = requests.get(link)
 	class_page_soup = BeautifulSoup(class_page.text, 'html.parser')
-	data = class_page_soup.body.find('script', type='text/javascript').text.split(';')[0][26:]
+	data = class_page_soup.body.find('script', type='text/javascript').text.split('\n')[1][25:-1]
 	# The [26:] removes "var sectionDataObj = " from the beginning of the text
 
 	sections = []
+	try:
+		json_data = json.loads(data)
+	except:
+		print(link)
+		return []
+
 	for section_dict in json.loads(data):
 		crn = section_dict['crn']
 
@@ -57,32 +63,38 @@ def get_sections_from_class(link):
 # 	['63464', 'ARRANGED', 'ARRANGED', 'n.a.', 'n.a', 'n.a']
 # ]
 
+#TODO: Currently just writes everything to a file. Need to make it place into database.
 
 #take a section given by get_sections_from_class and add it to the MySQL database.
-def input_into_MySQL_database(section):
-	pass
-	"""conn = mysql.connector.connect(
-				   user='root', password='dAta4Cs22SmySQ', host='127.0.0.1', database='mydb')
+def input_into_MySQL_database(section, file_name):
+	with open(file_name, 'a') as file:
+		file.write('|'.join(section))
+		file.write('\n')
+
+"""
+conn = mysql.connector.connect(
+   user='root', password='dAta4Cs22SmySQ', host='127.0.0.1', database='mydb')
+
+cursor = conn.cursor()
+
+insert_stmt = (
+   "INSERT INTO DATA(CRN, TIME_START, TIME_END, DAY, LOCATION, ROOM_NUMBER)"
+   "VALUES (%s, %s, %s, %s, %s, %s)"
+)
+
+data = (crn, time_start, time_end,day,location,room_number)
+
+try:
+   cursor.execute(insert_stmt, data)
+   conn.commit()
+
+except:
+   conn.rollback()
 			
-				cursor = conn.cursor()
+print("Data inserted")
 			
-				insert_stmt = (
-				   "INSERT INTO DATA(CRN, TIME_START, TIME_END, DAY, LOCATION, ROOM_NUMBER)"
-				   "VALUES (%s, %s, %s, %s, %s, %s)"
-				)
-			
-				data = (crn, time_start, time_end,day,location,room_number)
-			
-				try:
-				   cursor.execute(insert_stmt, data)
-				   conn.commit()
-			
-				except:
-				   conn.rollback()
-			
-				print("Data inserted")
-			
-				conn.close()"""
+conn.close()
+"""
 
 classes = {}
 
@@ -93,10 +105,14 @@ with open("ClassLinks.txt", 'r') as file:
 		subject_code, class_count = file.readline().split()
 		classes[subject_code] = [file.readline()[:-1] for _ in range(int(class_count))]
 
+#clear ClassSections.txt
+with open("ClassSections.txt",'w') as file:
+    pass
+
 
 #input every class section into MySQL Database
 for subject_code in classes:
 	for link in classes[subject_code]:
 		sections = get_sections_from_class(link)
-		for sections in sections:
-			input_into_MySQL_database(section)
+		for section in sections:
+			input_into_MySQL_database(section, "ClassSections.txt")
