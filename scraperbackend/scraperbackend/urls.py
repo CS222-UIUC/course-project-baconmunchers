@@ -20,8 +20,9 @@ from scraperapp import views
 
 router = routers.DefaultRouter()
 router.register(r'ClassInfos', views.ClassInfoView, 'ClassInfo')
+router.register(r'ClassQuerys', views.ClassQueryView, 'ClassQuery')
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
+    path('', include(router.urls)),
     path('classes/', include('scraperapp.urls')),
 ]

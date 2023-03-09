@@ -24,5 +24,12 @@ class ClassInfo(models.Model):
     Days = models.CharField(max_length=10)
     # MWF
     
+class ClassQuery(models.Model):
+    CRN = models.IntegerField()
+    StartTime = models.CharField(max_length=10, null=True, blank=True)
+    EndTime = models.CharField(max_length=10, null=True, blank=True)
+    Room = models.CharField(max_length=10, null=True, blank=True)
+    Building = models.CharField(max_length=30, null=True, blank=True)
+    Days = models.CharField(max_length=10, null=True, blank=True)
 
     
