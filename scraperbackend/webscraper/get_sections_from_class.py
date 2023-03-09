@@ -4,17 +4,20 @@ from bs4 import BeautifulSoup
 import json
 
 def get_sections_from_class(link):
+	"""Get non-online non-asynchronous sections of a class, given course explorer url.
+	Data returned as list of sections, each section formatted as [crn, start, end, day, building, room]."""
+
 	class_page = requests.get(link)
 	class_page_soup = BeautifulSoup(class_page.text, 'html.parser')
 	data = class_page_soup.body.find('script', type='text/javascript').text.split('\n')[1][25:-1]
 
-	sections = []
 	try:
 		json_data = json.loads(data)
 	except:
 		print(link)
 		return []
 
+	sections = []
 	for section_dict in json_data:
 		crn = section_dict['crn']
 
@@ -27,15 +30,8 @@ def get_sections_from_class(link):
 		locations = [i.text for i in location_soup.find_all('div')]
 
 		for time, day, location in zip(times, days, locations):
-			if location == 'n.a.':
-				room, building = 'n.a', 'n.a'
-			else:
-				room, building = location.split(' ', 1)
-			if time == 'ARRANGED':
-				start, end = 'ARRANGED', 'ARRANGED'
-			else:
+			if time != 'ARRANGED' and day != 'n.a.' and location != 'n.a.' and location != 'Location Pending':
 				start, end = time.split(' - ', 1)
-			if day == 'n.a.':
-				pass
-			sections.append([crn, start, end, day, building, room])	
+				room, building = location.split(' ', 1)
+				sections.append([crn, start, end, day, building, room])	
 	return sections
