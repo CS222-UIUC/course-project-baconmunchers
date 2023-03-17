@@ -1,8 +1,9 @@
 import requests
 import re
 from bs4 import BeautifulSoup
+from scraperapp.models import ClassInfo
 import json
-import mysql.connector
+# import mysql.connector
 
 
 def get_sections_from_class(link):
@@ -59,8 +60,10 @@ def get_sections_from_class(link):
 
 
 #take a section given by get_sections_from_class and add it to the MySQL database.
-def input_into_MySQL_database(section):
-	pass
+def input_into_SQLite_database(section):
+	input = ClassInfo(CRN=section[0],StartTime=section[1],EndTime=section[2],Days=section[3],Building=section[4],Room=section[5])
+	input.save()
+
 	"""conn = mysql.connector.connect(
 				   user='root', password='dAta4Cs22SmySQ', host='127.0.0.1', database='mydb')
 			
@@ -83,20 +86,22 @@ def input_into_MySQL_database(section):
 				print("Data inserted")
 			
 				conn.close()"""
+# every django script must have a run function in order to be ran
+def run():	
+	classes = {}
 
-classes = {}
-
-#read classes from ClassLinks.txt
-with open("ClassLinks.txt", 'r') as file:
-	subject_count = int(file.readline())
-	for _ in range(subject_count):
-		subject_code, class_count = file.readline().split()
-		classes[subject_code] = [file.readline()[:-1] for _ in range(int(class_count))]
+	#read classes from ClassLinks.txt
+	with open("ClassLinks.txt", 'r') as file:
+		subject_count = int(file.readline())
+		for _ in range(subject_count):
+			subject_code, class_count = file.readline().split()
+			classes[subject_code] = [file.readline()[:-1] for _ in range(int(class_count))]
 
 
-#input every class section into MySQL Database
-for subject_code in classes:
-	for link in classes[subject_code]:
-		sections = get_sections_from_class(link)
-		for sections in sections:
-			input_into_MySQL_database(section)
+	#input every class section into MySQL Database
+
+	for subject_code in classes:
+		for link in classes[subject_code]:
+			sections = get_sections_from_class(link)
+			for section in sections:
+				input_into_SQLite_database(section)

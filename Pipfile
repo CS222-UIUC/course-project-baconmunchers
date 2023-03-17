@@ -10,9 +10,9 @@ requests = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
 mysqlclient = "*"
+django-extensions = "*"
 
 [dev-packages]
 
 [requires]
 python_version = "3.9"
- 

@@ -12,7 +12,7 @@ class ClassInfoView(viewsets.ModelViewSet):
 
 class ClassQueryView(viewsets.ModelViewSet):
     serializer_class = ClassQuerySerializer
-    queryset = ClassQuery.objects.all()
+    queryset = ClassQuery.objects.all() # .filter()
 
 def index(request):
     return HttpResponse("Hello, world. You're at the Course index.")
