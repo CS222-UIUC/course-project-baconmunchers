@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>My test page</title>
+  </head>
+  <body>
+    <table>
+        <tr>
+            <th>CRN</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Days</th>
+            <th>Building</th>
+            <th>Room</th>
+        </tr>
+            
+        {% for class in info %}
+            <tr>
+                <td>{{class.CRN}}</td>
+                <td>{{class.StartTime}}</td>
+                <td>{{class.EndTime}}</td>
+                <td>{{class.Days}}</td>
+                <td>{{class.Building}}</td>
+                <td>{{class.Room}}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+    
+
+  </body>
+</html>

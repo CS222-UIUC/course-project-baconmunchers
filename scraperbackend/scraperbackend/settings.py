@@ -59,7 +59,7 @@ ROOT_URLCONF = 'scraperbackend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,3 +131,5 @@ CORS_ORIGIN_WHITELIST = [
      'http://localhost:3000'
 ]
 
+# RUNSCRIPT_CHDIR_POLICY = 'each'
+# I want to set the default directory for running scripts, but the documentation is unclear of how to do so

@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import ClassInfo, ClassQuery
+from .models import ClassInfo #, ClassQuery
 
 
 
@@ -11,4 +11,4 @@ from .models import ClassInfo, ClassQuery
 #     list_display = ('CRN', 'StartTime', 'EndTime', 'Room', 'Building', 'Days')
 
 admin.site.register(ClassInfo)
-admin.site.register(ClassQuery)
+# admin.site.register(ClassQuery)

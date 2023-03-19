@@ -1,18 +1,63 @@
 from rest_framework import viewsets
-from .serializers import ClassInfoSerializer, ClassQuerySerializer
-from .models import ClassInfo, ClassQuery
+from rest_framework.response import Response
+from .serializers import ClassInfoSerializer# , ClassQuerySerializer
+from .models import ClassInfo# , ClassQuery
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from .forms import ClassForm
+from datetime import datetime
 # Create your views here.
 
-class ClassInfoView(viewsets.ModelViewSet):
+class ClassInfoView(viewsets.ReadOnlyModelViewSet):
     serializer_class = ClassInfoSerializer
     queryset = ClassInfo.objects.all()
 
-
-class ClassQueryView(viewsets.ModelViewSet):
+"""
+class ClassQueryView(viewsets.ReadOnlyModelViewSet):
     serializer_class = ClassQuerySerializer
     queryset = ClassQuery.objects.all() # .filter()
+"""
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the Course index.")
+
+
+def get_class(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = ClassForm(request.POST)
+        print(form)
+        print(form.cleaned_data)
+        if form.is_valid():
+            CRN = form.cleaned_data['CRN']
+            StartTime = form.cleaned_data['StartTime']
+            EndTime = form.cleaned_data['EndTime']
+            Days = form.cleaned_data['Days'] 
+            Building = form.cleaned_data['Building'] 
+            Room = form.cleaned_data['Room']
+            info = ClassInfo.objects.all()
+            print(CRN, StartTime, EndTime, Days, Building, Room)
+            if CRN != None:
+                info = info.filter(CRN__icontains=str(CRN))
+                # could change the database parsing to store CRN as an integer
+            if StartTime != None:
+                info = info.filter(StartTime__icontains=StartTime.strftime('%I:%M'))
+            if EndTime != None:
+                info = info.filter(EndTime__icontains=EndTime.strftime('%I:%M'))
+            if Days != "":
+                info = info.filter(Days__icontains=Days)
+            if Building != "":
+                info = info.filter(Building__icontains=Building)
+            if Room != "":
+                info = info.filter(Room__icontains=Room)
+
+            return render(request, 'classes.html', {'info': info})
+
+            
+        # should add a 404 exception if the form is invalid
+    else:
+        form = ClassForm()
+
+    # get_class.html is a template, stored in the templates directory
+    return render(request, 'get_class.html', {'form': form})
+
+
