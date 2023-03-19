@@ -43,7 +43,6 @@ def get_sections_from_class(link):
 
 
 
-#TODO: Currently just writes everything to a file. Need to make it place into database.
 
 #take a section given by get_sections_from_class and add it to the MySQL database.
 

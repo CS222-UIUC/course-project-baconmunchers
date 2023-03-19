@@ -1,3 +1,4 @@
+"""Module providing models to admin site view"""
 from django.contrib import admin
 
 # Register your models here.
