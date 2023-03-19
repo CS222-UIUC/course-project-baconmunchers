@@ -9,4 +9,4 @@ cd into the scraperbackend folder of the repository, then type the following com
 python manage.py runserver
 
 Then in a brower, enter the following url:
-http://localhost:8000/api/ClassInfos/
+http://localhost:8000/get_class/
