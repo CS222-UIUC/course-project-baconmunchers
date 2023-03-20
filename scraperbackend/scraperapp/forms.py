@@ -1,7 +1,9 @@
 from django import forms
 
 class ClassForm(forms.Form):
-    CRN = forms.IntegerField(label="CRN", required=False, help_text="5-digit Class Code <br/>",)
+    CRN = forms.IntegerField(   label="CRN", required=False, 
+                                help_text="5-digit Class Code <br/>",
+                                widget=forms.NumberInput(attrs={'type': 'number'}))
     StartTime = forms.TimeField(label="Start Time", required=False, 
                                 help_text="<br/>",#Formatted like 09:00AM",
                                 # input_formats=['%I:%M%p'],
