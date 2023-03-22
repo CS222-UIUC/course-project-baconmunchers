@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "efc324732d09eb3a0ab31465d2a20ff372d55eb384cd675c5cf1d98c026d3231"
+            "sha256": "40cda24ba10043aec2f9480ddd1f986cc589f038925047ede2d9d23671932659"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -26,11 +26,11 @@
         },
         "beautifulsoup4": {
             "hashes": [
-                "sha256:0e79446b10b3ecb499c1556f7e228a53e64a2bfcebd455f370d8927cb5b59e39",
-                "sha256:bc4bdda6717de5a2987436fb8d72f45dc90dd856bdfd512a1314ce90349a0106"
+                "sha256:2130a5ad7f513200fae61a17abb5e338ca980fa28c439c0571014bc0217e9591",
+                "sha256:c5fceeaec29d09c84970e47c65f2f0efe57872f7cff494c9691a26ec0ff13234"
             ],
             "index": "pypi",
-            "version": "==4.11.2"
+            "version": "==4.12.0"
         },
         "certifi": {
             "hashes": [
@@ -173,6 +173,13 @@
             ],
             "index": "pypi",
             "version": "==2.1.1"
+        },
+        "pysqlite3": {
+            "hashes": [
+                "sha256:3bbddd291e21c83670034f17a13edd0e0ef6ef1a53764ecdcb322d36d7302287"
+            ],
+            "index": "pypi",
+            "version": "==0.5.0"
         },
         "pytz": {
             "hashes": [
