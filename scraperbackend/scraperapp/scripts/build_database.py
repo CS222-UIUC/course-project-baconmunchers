@@ -6,6 +6,7 @@ import json
 
 # import mysql.connector
 
+<<<<<<< Updated upstream
 # from get_sections_from_class import get_sections_from_class
 def get_class_links():
 	course_explorer = 'https://courses.illinois.edu'
@@ -43,6 +44,8 @@ def get_class_links():
 			for link in classes[subject_code]:
 				file.write(f"{link}\n")
 
+=======
+>>>>>>> Stashed changes
 def get_sections_from_class(link):
 	"""Get non-online non-asynchronous sections of a class, given course explorer url.
 	Data returned as list of sections, each section formatted as [crn, start, end, day, building, room]."""
@@ -78,15 +81,19 @@ def get_sections_from_class(link):
 
 
 
-
 #take a section given by get_sections_from_class and add it to the MySQL database.
 
-def input_into_SQLite_database(section):
+def input_into_SQLite_database(subject_code, class_number, section):
 	input = ClassInfo(CRN=section[0],StartTime=section[1],EndTime=section[2],Days=section[3],Building=section[4],Room=section[5])
 	input.save()
 
+<<<<<<< Updated upstream
 def run(): 
 	get_class_links()
+=======
+
+def run():	
+>>>>>>> Stashed changes
 	classes = {}
 	# remove all existing class info objects
 	ClassInfo.objects.all().delete()
@@ -115,10 +122,11 @@ def run():
 	
 	
 
-	#input every class section into MySQL Database
+	#input every class section into SQLite Database
 	for subject_code in classes:
 		for link in classes[subject_code]:
+			class_number = link.split('/')[-1]
 			sections = get_sections_from_class(link)
 			for section in sections:
-				input_into_SQLite_database(section)
-				print(section)
+				input_into_SQLite_database(subject_code, class_number, section)
+				#print(section)
