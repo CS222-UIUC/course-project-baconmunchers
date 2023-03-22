@@ -6,7 +6,6 @@ import json
 
 # import mysql.connector
 
-<<<<<<< Updated upstream
 # from get_sections_from_class import get_sections_from_class
 def get_class_links():
 	course_explorer = 'https://courses.illinois.edu'
@@ -44,11 +43,11 @@ def get_class_links():
 			for link in classes[subject_code]:
 				file.write(f"{link}\n")
 
-=======
->>>>>>> Stashed changes
+
 def get_sections_from_class(link):
 	"""Get non-online non-asynchronous sections of a class, given course explorer url.
 	Data returned as list of sections, each section formatted as [crn, start, end, day, building, room]."""
+	subject_code, course_number = link.split('/')[-2:]
 
 	class_page = requests.get(link)
 	class_page_soup = BeautifulSoup(class_page.text, 'html.parser')
@@ -76,21 +75,17 @@ def get_sections_from_class(link):
 			if time != 'ARRANGED' and day != 'n.a.' and location != 'n.a.' and location != 'Location Pending':
 				start, end = time.split(' - ', 1)
 				room, building = location.split(' ', 1)
-				sections.append([crn, start, end, day, building, room])	
+				sections.append([subject_code, course_number, crn, start, end, day, building, room])	
 	return sections
 
 
 
 #take a section given by get_sections_from_class and add it to the MySQL database.
 
-def input_into_SQLite_database(subject_code, class_number, section):
-	input = ClassInfo(CRN=section[0],StartTime=section[1],EndTime=section[2],Days=section[3],Building=section[4],Room=section[5])
+def input_into_SQLite_database(section):
+	input = ClassInfo(CRN=section[2],StartTime=section[3],EndTime=section[4],Days=section[5],Building=section[6],Room=section[7])
 	input.save()
 
-<<<<<<< Updated upstream
-def run(): 
-	get_class_links()
-=======
 
 def run():	
 >>>>>>> Stashed changes
@@ -125,8 +120,7 @@ def run():
 	#input every class section into SQLite Database
 	for subject_code in classes:
 		for link in classes[subject_code]:
-			class_number = link.split('/')[-1]
 			sections = get_sections_from_class(link)
 			for section in sections:
-				input_into_SQLite_database(subject_code, class_number, section)
+				input_into_SQLite_database(section)
 				#print(section)
