@@ -430,7 +430,7 @@ https://courses.illinois.edu/schedule/2023/spring/ARAB/404
 https://courses.illinois.edu/schedule/2023/spring/ARAB/406
 https://courses.illinois.edu/schedule/2023/spring/ARAB/408
 https://courses.illinois.edu/schedule/2023/spring/ARAB/490
-ARCH 43
+ARCH 44
 https://courses.illinois.edu/schedule/2023/spring/ARCH/172
 https://courses.illinois.edu/schedule/2023/spring/ARCH/199
 https://courses.illinois.edu/schedule/2023/spring/ARCH/222
@@ -448,6 +448,7 @@ https://courses.illinois.edu/schedule/2023/spring/ARCH/435
 https://courses.illinois.edu/schedule/2023/spring/ARCH/468
 https://courses.illinois.edu/schedule/2023/spring/ARCH/472
 https://courses.illinois.edu/schedule/2023/spring/ARCH/474
+https://courses.illinois.edu/schedule/2023/spring/ARCH/475
 https://courses.illinois.edu/schedule/2023/spring/ARCH/482
 https://courses.illinois.edu/schedule/2023/spring/ARCH/484
 https://courses.illinois.edu/schedule/2023/spring/ARCH/490
@@ -1450,7 +1451,7 @@ https://courses.illinois.edu/schedule/2023/spring/CW/560
 https://courses.illinois.edu/schedule/2023/spring/CW/563
 https://courses.illinois.edu/schedule/2023/spring/CW/591
 https://courses.illinois.edu/schedule/2023/spring/CW/595
-CWL 38
+CWL 39
 https://courses.illinois.edu/schedule/2023/spring/CWL/111
 https://courses.illinois.edu/schedule/2023/spring/CWL/119
 https://courses.illinois.edu/schedule/2023/spring/CWL/122
@@ -1477,6 +1478,7 @@ https://courses.illinois.edu/schedule/2023/spring/CWL/264
 https://courses.illinois.edu/schedule/2023/spring/CWL/267
 https://courses.illinois.edu/schedule/2023/spring/CWL/273
 https://courses.illinois.edu/schedule/2023/spring/CWL/317
+https://courses.illinois.edu/schedule/2023/spring/CWL/413
 https://courses.illinois.edu/schedule/2023/spring/CWL/440
 https://courses.illinois.edu/schedule/2023/spring/CWL/493
 https://courses.illinois.edu/schedule/2023/spring/CWL/496
@@ -1942,13 +1944,14 @@ https://courses.illinois.edu/schedule/2023/spring/ERAM/556
 https://courses.illinois.edu/schedule/2023/spring/ERAM/557
 https://courses.illinois.edu/schedule/2023/spring/ERAM/572
 https://courses.illinois.edu/schedule/2023/spring/ERAM/581
-ESE 22
+ESE 23
 https://courses.illinois.edu/schedule/2023/spring/ESE/103
 https://courses.illinois.edu/schedule/2023/spring/ESE/111
 https://courses.illinois.edu/schedule/2023/spring/ESE/117
 https://courses.illinois.edu/schedule/2023/spring/ESE/118
 https://courses.illinois.edu/schedule/2023/spring/ESE/120
 https://courses.illinois.edu/schedule/2023/spring/ESE/140
+https://courses.illinois.edu/schedule/2023/spring/ESE/202
 https://courses.illinois.edu/schedule/2023/spring/ESE/208
 https://courses.illinois.edu/schedule/2023/spring/ESE/210
 https://courses.illinois.edu/schedule/2023/spring/ESE/254
@@ -3221,11 +3224,12 @@ https://courses.illinois.edu/schedule/2023/spring/MDIA/299
 https://courses.illinois.edu/schedule/2023/spring/MDIA/572
 https://courses.illinois.edu/schedule/2023/spring/MDIA/590
 https://courses.illinois.edu/schedule/2023/spring/MDIA/599
-MDVL 8
+MDVL 9
 https://courses.illinois.edu/schedule/2023/spring/MDVL/201
 https://courses.illinois.edu/schedule/2023/spring/MDVL/247
 https://courses.illinois.edu/schedule/2023/spring/MDVL/252
 https://courses.illinois.edu/schedule/2023/spring/MDVL/411
+https://courses.illinois.edu/schedule/2023/spring/MDVL/413
 https://courses.illinois.edu/schedule/2023/spring/MDVL/500
 https://courses.illinois.edu/schedule/2023/spring/MDVL/514
 https://courses.illinois.edu/schedule/2023/spring/MDVL/542
@@ -3620,12 +3624,13 @@ https://courses.illinois.edu/schedule/2023/spring/NPRE/561
 https://courses.illinois.edu/schedule/2023/spring/NPRE/596
 https://courses.illinois.edu/schedule/2023/spring/NPRE/597
 https://courses.illinois.edu/schedule/2023/spring/NPRE/599
-NRES 47
+NRES 48
 https://courses.illinois.edu/schedule/2023/spring/NRES/100
 https://courses.illinois.edu/schedule/2023/spring/NRES/101
 https://courses.illinois.edu/schedule/2023/spring/NRES/105
 https://courses.illinois.edu/schedule/2023/spring/NRES/108
 https://courses.illinois.edu/schedule/2023/spring/NRES/201
+https://courses.illinois.edu/schedule/2023/spring/NRES/202
 https://courses.illinois.edu/schedule/2023/spring/NRES/210
 https://courses.illinois.edu/schedule/2023/spring/NRES/220
 https://courses.illinois.edu/schedule/2023/spring/NRES/223
