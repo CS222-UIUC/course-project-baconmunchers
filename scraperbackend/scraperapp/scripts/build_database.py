@@ -36,7 +36,7 @@ def get_class_links():
 		classes[subject_code] = class_links
 
 
-	#write classes to CLassLinks.txt for later use
+	#write classes to ClassLinks.txt for later use
 	with open("ClassLinks.txt", 'w') as file:
 		file.write(f"{len(classes)}\n")
 		for subject_code in classes:
