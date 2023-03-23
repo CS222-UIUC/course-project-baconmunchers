@@ -75,7 +75,11 @@ def get_sections_from_class(link):
 		for time, day, location in zip(times, days, locations):
 			if time != 'ARRANGED' and day != 'n.a.' and location != 'n.a.' and location != 'Location Pending':
 				start, end = time.split(' - ', 1)
-				room, building = location.split(' ', 1)
+				if location == 'MAC GYM Campus Recreation Center East':
+					room, building = 'MAC GYM', 'Campus Recreation Center East'
+					# TODO: are there any more minor exceptions like this for when we re-generate the database
+				else:
+					room, building = location.split(' ', 1)
 				sections.append([subject_code, course_number, crn, start, end, day, building, room])	
 	return sections
 
