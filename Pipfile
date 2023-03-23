@@ -12,6 +12,7 @@ django-cors-headers = "*"
 mysqlclient = "*"
 django-extensions = "*"
 pysqlite3 = "*"
+pipfile = "*"
 
 [dev-packages]
 
