@@ -1,6 +1,10 @@
 from django import forms
 
 class ClassForm(forms.Form):
+    SubjectCode = forms.CharField(label="Subject Code", required=False, help_text="<br/>")
+    CourseNumber = forms.IntegerField(   label="Course Number", required=False, 
+                                        help_text="3-digit Course Number <br/>",
+                                        widget=forms.NumberInput(attrs={'type': 'number'}))
     CRN = forms.IntegerField(   label="CRN", required=False, 
                                 help_text="5-digit Class Code <br/>",
                                 widget=forms.NumberInput(attrs={'type': 'number'}))

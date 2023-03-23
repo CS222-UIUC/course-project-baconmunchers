@@ -3,6 +3,7 @@ import re
 from bs4 import BeautifulSoup
 
 def run():
+	print('Accessing all class page links')
 	course_explorer = 'https://courses.illinois.edu'
 	year = '2023'
 	season = 'spring'
@@ -30,7 +31,7 @@ def run():
 		classes[subject_code] = class_links
 
 
-	#write classes to CLassLinks.txt for later use
+	#write classes to ClassLinks.txt for later use
 	with open("ClassLinks.txt", 'w') as file:
 		file.write(f"{len(classes)}\n")
 		for subject_code in classes:

@@ -7,6 +7,8 @@
   <body>
     <table>
         <tr>
+            <th>Subject Code</th>
+            <th>Course Number</th>
             <th>CRN</th>
             <th>Start Time</th>
             <th>End Time</th>
@@ -17,6 +19,8 @@
             
         {% for class in info %}
             <tr>
+                <td>{{class.SubjectCode}}</td>
+                <td>{{class.CourseNumber}}</td>
                 <td>{{class.CRN}}</td>
                 <td>{{class.StartTime}}</td>
                 <td>{{class.EndTime}}</td>

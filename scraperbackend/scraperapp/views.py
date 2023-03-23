@@ -28,6 +28,8 @@ def get_class(request):
         print(form)
         print(form.cleaned_data)
         if form.is_valid():
+            SubjectCode = form.cleaned_data['SubjectCode']
+            CourseNumber = form.cleaned_data['CourseNumber']
             CRN = form.cleaned_data['CRN']
             StartTime = form.cleaned_data['StartTime']
             EndTime = form.cleaned_data['EndTime']
@@ -36,6 +38,10 @@ def get_class(request):
             Room = form.cleaned_data['Room']
             info = ClassInfo.objects.all()
             print(CRN, StartTime, EndTime, Days, Building, Room)
+            if SubjectCode != "":
+                info = info.filter(SubjectCode__icontains=SubjectCode)
+            if CourseNumber != None:
+                info = info.filter(CourseNumber__icontains=str(CourseNumber))
             if CRN != None:
                 info = info.filter(CRN__icontains=str(CRN))
                 # could change the database parsing to store CRN as an integer
