@@ -11,11 +11,8 @@ djangorestframework = "*"
 django-cors-headers = "*"
 mysqlclient = "*"
 django-extensions = "*"
-<<<<<<< HEAD
 pysqlite3 = "*"
 pipfile = "*"
-=======
->>>>>>> 66840b6d5431d6997c352d77df254145277f4d29
 
 [dev-packages]
 
