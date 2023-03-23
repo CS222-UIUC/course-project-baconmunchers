@@ -3,6 +3,7 @@ import re
 from bs4 import BeautifulSoup
 from scraperapp.models import ClassInfo
 import json
+import time
 
 # import mysql.connector
 
@@ -83,12 +84,20 @@ def get_sections_from_class(link):
 #take a section given by get_sections_from_class and add it to the MySQL database.
 
 def input_into_SQLite_database(section):
-	input = ClassInfo(CRN=section[2],StartTime=section[3],EndTime=section[4],Days=section[5],Building=section[6],Room=section[7])
+	input = ClassInfo(	SubjectCode=section[0], \
+						CourseNumber=section[1], \
+						CRN=section[2], \
+						StartTime=section[3], \
+						EndTime=section[4], \
+						Days=section[5], \
+						Building=section[6], \
+						Room=section[7])
 	input.save()
 
 
 def run():	
->>>>>>> Stashed changes
+	t0 = time.perf_counter()
+	get_class_links()
 	classes = {}
 	# remove all existing class info objects
 	ClassInfo.objects.all().delete()
@@ -119,8 +128,11 @@ def run():
 
 	#input every class section into SQLite Database
 	for subject_code in classes:
+		print(subject_code)
 		for link in classes[subject_code]:
 			sections = get_sections_from_class(link)
 			for section in sections:
 				input_into_SQLite_database(section)
-				#print(section)
+
+	t1 = time.perf_counter()
+	print(t1 - t0)

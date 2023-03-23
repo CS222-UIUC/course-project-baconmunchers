@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "40cda24ba10043aec2f9480ddd1f986cc589f038925047ede2d9d23671932659"
+            "sha256": "efc324732d09eb3a0ab31465d2a20ff372d55eb384cd675c5cf1d98c026d3231"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -173,13 +173,6 @@
             ],
             "index": "pypi",
             "version": "==2.1.1"
-        },
-        "pysqlite3": {
-            "hashes": [
-                "sha256:3bbddd291e21c83670034f17a13edd0e0ef6ef1a53764ecdcb322d36d7302287"
-            ],
-            "index": "pypi",
-            "version": "==0.5.0"
         },
         "pytz": {
             "hashes": [
