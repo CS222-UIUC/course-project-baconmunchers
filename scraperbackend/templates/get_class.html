@@ -1,3 +1,4 @@
+<!-- {% load static %} -->
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
@@ -10,6 +11,17 @@
         {{ form }}
         <input type="submit" value="Submit">
     </form>
+
+    <img src="{% static 'floorplans/cif/cifb.png' %}" alt="CIF Basement" usemap="#cifbmap"/>
+    
+    <!-- generated with https://www.image-map.net/ -->
+    <map name="cifbmap">
+        <area alt="CIF 0027" title="CIF 0027" coords="924,447,402,58" shape="rect" onclick="alert('0027');">
+        <area alt="CIF 0035" title="CIF 0035" coords="932,45,1478,449" shape="rect" onclick="alert('0035');">
+        <area alt="CIF 0018" title="CIF 0018" coords="164,609,492,770" shape="rect" onclick="alert('0018');">
+        <area alt="CIF 0036" title="CIF 0036" coords="1208,609,1352,792" shape="rect" onclick="alert('0036');">
+    </map>
+
   </body>
 </html>
 
