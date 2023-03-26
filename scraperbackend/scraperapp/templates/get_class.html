@@ -1,18 +1,26 @@
-<!-- {% load static %} -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
     <meta charset="utf-8" />
     <title>Get Class</title>
+    <style>
+      img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+      }
+  </style>
   </head>
   <body>
+    
     <form action="/get_class/" method="post" id="class_info_form">
         {% csrf_token %}
         {{ form }}
         <input type="submit" value="Submit">
     </form>
 
-    <img src="{% static 'floorplans/cif/cifb.png' %}" alt="CIF Basement" usemap="#cifbmap"/>
+    <img src="{% static 'floorplans/cif/cifb.png' %}" width="826" height="415" alt="CIF Basement" usemap="#cifbmap"/>
     
     <!-- generated with https://www.image-map.net/ -->
     <map name="cifbmap">
@@ -21,7 +29,6 @@
         <area alt="CIF 0035" title="CIF 0035" coords="932,45,1478,449" shape="rect" onclick="fillOutRoom('Campus Instructional Facility', '0035');">
         <area alt="CIF 0036" title="CIF 0036" coords="1208,609,1352,792" shape="rect" onclick="fillOutRoom('Campus Instructional Facility', '0036');">
     </map>
-
     <script>
       function fillOutRoom(building, room) {
         document.getElementById('id_Building').value = building;
@@ -29,8 +36,12 @@
         document.forms[0].submit();
       }
     </script>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src= "{% static 'imageMapResizer.min.js' %}"></script>
+    <script type="text/javascript">
+      imageMapResize();
+    </script>
 
   </body>
 </html>
-
-
