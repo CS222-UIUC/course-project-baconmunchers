@@ -13,7 +13,7 @@
   </style>
   </head>
   <body>
-    
+    <img src="{% static 'floorplans/masterMapMedium.png' %}" alt="masterMap">
     <form action="/get_class/" method="post" id="class_info_form">
         {% csrf_token %}
         {{ form }}
