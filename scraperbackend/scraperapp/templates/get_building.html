@@ -13,14 +13,23 @@
     </style>
   </head>
 
+  <form action = "/get_building/" method = "POST" id="building_page_form">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+  </form>
+
   <body>
     <img src="{% static 'floorplans/masterMapMedium.png' %}" usemap="#mastermap">
     <map name="mastermap">
-        <area alt="CIF" title="CIF" coords="4045,2135,4355,2297" shape="rect" onclick="goToBuilding('CIF');">
+        <area alt="CIF" title="CIF" coords="4045,2135,4355,2297" shape="rect" onclick="goToBuilding('Campus Instructional Facility');">
     </map>
 
     <script>
-      function goToBuilding(building) {}
+      function goToBuilding(building) {
+        document.getElementById('id_Building').value = building;
+        document.forms[0].submit();
+      }
     </script>
 
   </body>

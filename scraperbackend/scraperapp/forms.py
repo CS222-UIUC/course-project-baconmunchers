@@ -25,3 +25,7 @@ class ClassForm(forms.Form):
     # would probably be ideal to replace this with a drop-down list of the buildings
     Room = forms.CharField(label="Room", required=False, )
     # would probably be ideal to have this pop up depending on the building that was entered
+
+
+class BuildingForm(forms.Form):
+    Building = forms.CharField(label="Building", required=False, widget=forms.Select(choices=BUILDINGS))
