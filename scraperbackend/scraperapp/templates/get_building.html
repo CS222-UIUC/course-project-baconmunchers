@@ -12,24 +12,41 @@
       }
     </style>
   </head>
-
-  <form action = "/get_building/" method = "POST" id="building_page_form">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
-  </form>
-
   <body>
+
+    <form action = "/get_building/" method = "POST" id="building_page_form">
+      {% csrf_token %}
+      {{ form }}
+      <input type="submit" value="Submit">
+    </form>
+
     <img src="{% static 'floorplans/masterMapMedium.png' %}" usemap="#mastermap">
     <map name="mastermap">
-        <area alt="CIF" title="CIF" coords="4045,2135,4355,2297" shape="rect" onclick="goToBuilding('Campus Instructional Facility');">
+      <area alt="CIF" title="CIF" coords="4045,2135,4355,2297" shape="rect" onclick="goToBuilding('Campus Instructional Facility');">
     </map>
 
     <script>
+      var building_page_form = document.getElementById('building_page_form');
       function goToBuilding(building) {
         document.getElementById('id_Building').value = building;
-        document.forms[0].submit();
+        building_page_form.submit();
       }
+    </script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src= "{% static 'imageMapResizer.min.js' %}"></script>
+    <script type="text/javascript">
+      imageMapResize();
+    </script>
+    <script>
+      // https://codeamend.com/blog/show-hide-div-based-on-dropdown-selected-using-jquery/#:~:text=If%20you%20want%20to%20hide,of%20the%20selected%20dropdown%20option.
+      $(document).ready(function() {
+          $('#floorselection').bind('change', function() {
+            $(".floor").hide();
+            $("#" + $(this).val()).show();
+          });
+          $('#floorselection').trigger('change');
+      });
     </script>
 
   </body>
