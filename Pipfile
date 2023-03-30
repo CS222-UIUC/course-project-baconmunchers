@@ -13,6 +13,7 @@ mysqlclient = "*"
 django-extensions = "*"
 pysqlite3 = "*"
 pipfile = "*"
+django-autocomplete-light = "*"
 
 [dev-packages]
 

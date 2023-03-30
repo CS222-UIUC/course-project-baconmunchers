@@ -25,9 +25,8 @@ def get_class(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = ClassForm(request.POST)
-        print(form)
-        print(form.cleaned_data)
         if form.is_valid():
+            print(set(list(ClassInfo.objects.values_list('Building', flat=True))))
             SubjectCode = form.cleaned_data['SubjectCode']
             CourseNumber = form.cleaned_data['CourseNumber']
             CRN = form.cleaned_data['CRN']
