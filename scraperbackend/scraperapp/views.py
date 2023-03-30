@@ -69,3 +69,5 @@ def get_class(request):
     return render(request, 'get_class.html', {'form': form})
 
 
+def get_building(request):
+    return render(request, 'get_building.html')

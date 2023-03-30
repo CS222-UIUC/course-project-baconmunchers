@@ -41,8 +41,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'scraperapp',
     'django_extensions',
-    'dal',
-    'dal_select2',
 ]
 
 MIDDLEWARE = [
