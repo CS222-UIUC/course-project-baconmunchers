@@ -2,7 +2,7 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from .serializers import ClassInfoSerializer# , ClassQuerySerializer
 from .models import ClassInfo# , ClassQuery
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import ClassForm
 from .forms import BuildingForm
@@ -127,3 +127,6 @@ def get_building(request):
     if request.method == 'POST' and len(request.POST) > 2:
         return building_page(request)
     return render(request, 'get_building.html', {'form': BuildingForm()})
+
+def main_page_redirect(request):
+    return redirect('/get_building/')
