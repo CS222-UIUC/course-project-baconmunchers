@@ -7,16 +7,18 @@
   </head>
   <body>
     <table class="table table-borderless table-hover">
-      <tr>
-        <th>Subject Code</th>
-        <th>Course Number</th>
-        <th>CRN</th>
-        <th>Start Time</th>
-        <th>End Time</th>
-        <th>Days</th>
-        <th>Building</th>
-        <th>Room</th>
+      <thead>
+        <tr>
+          <th>Subject Code</th>
+          <th>Course Number</th>
+          <th>CRN</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+          <th>Days</th>
+          <th>Building</th>
+          <th>Room</th>
       </tr>
+      </thead>
             
       {% for class in info %}
         <tr onclick="course_explorer('{{class.SubjectCode}}', '{{class.CourseNumber}}')">
