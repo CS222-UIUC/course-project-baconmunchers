@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Get Class</title>
+    <style>
+      img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <img src="{% static 'floorplans/masterMapMedium.png' %}" alt="masterMap"> -->
+    <form action="/get_building/" method="post" id="class_info_form">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+
+    <select id="floorselection">
+      <option value="">Select Floor</option>
+      <option value="eceb1">ECE Building Floor 1</option>
+      <option value="eceb2">ECE Building Floor 2</option>
+      <option value="eceb3">ECE Building Floor 3</option>
+      <option value="eceb4">ECE Building Floor 4</option>
+      <option value="eceb5">ECE Building Floor 5</option>
+    </select>
+    <div id="eceb1" class="floor">
+      <img src="{% static 'floorplans/eceb/eceb1.png'%}" alt="ECE Building Floor 1" usemap="#eceb1map"/>
+      <map name="eceb1map">
+          <area alt="1015" title="1015" coords="492,1313,187,1069" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '1015');">
+          <area alt="1013" title="1013" coords="494,1072,802,1306" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '1013');">
+          <area alt="1002" title="1002" coords="1148,893,1632,1401" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '1002');">
+          <area alt="1003" title="1003" coords="667,574,1006,1069" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '1003');">
+          <area alt="1005" title="1005" coords="1545,392,1418,584" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '1005');">
+          <area alt="1001" title="1001" coords="1087,326,1418,586" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '1001');">
+      </map>
+    </div>
+    <div id="eceb2" class="floor">
+      <img src="{% static 'floorplans/eceb/eceb2.png'%}" alt="ECE Building Floor 2" usemap="#eceb2map"/>
+      <map name="eceb2map">
+          <area alt="2017" title="2017" coords="195,1113,435,1359" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '2017');">
+          <area alt="2015" title="2015" coords="617,1115,436,1356" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '2015');">
+          <area alt="2013" title="2013" coords="618,1112,808,1353" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '2013');">
+          <area alt="2070" title="2070" coords="1615,373,1419,629" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '2070');">
+          <area alt="2076" title="2076" coords="1045,376,1232,626" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '2076');">
+          <area alt="2022" title="2022" coords="902,375,681,622" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '2022');">
+          <area alt="2024" title="2024" coords="313,376,680,626" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '2024');">
+          <area alt="2026" title="2026" coords="114,373,309,623" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '2026');">
+          <area alt="2074" title="2074" coords="1233,376,1327,501" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '2074');">
+          <area alt="2072" title="2072" coords="1328,375,1420,500" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '2072');">
+      </map>
+    </div>
+    <div id="eceb3" class="floor">
+      <img src="{% static 'floorplans/eceb/eceb3.png'%}" alt="ECE Building Floor 3" usemap="#eceb3map"/>
+      <map name="eceb3map">
+          <area alt="3017" title="3017" coords="156,1101,395,1342" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '3017');">
+          <area alt="3015" title="3015" coords="396,1098,578,1346" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '3015');">
+          <area alt="3013" title="3013" coords="580,1095,767,1343" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '3013');">
+          <area alt="3002" title="3002" coords="1187,1118,1588,1426" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '3002');">
+          <area alt="3073" title="3073" coords="1196,490,1387,611" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '3073');">
+          <area alt="3075" title="3075" coords="1196,490,1006,608" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '3075');">
+          <area alt="3077" title="3077" coords="1196,488,1006,364" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '3077');">
+          <area alt="3071" title="3071" coords="1387,364,1197,488" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '3071');">
+          <area alt="3014" title="3014" coords="826,430,957,611" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '3014');">
+          <area alt="3016" title="3016" coords="638,362,826,612" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '3016');">
+          <area alt="3020" title="3020" coords="518,425,639,612" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '3020');">
+          <area alt="3022" title="3022" coords="396,431,519,613" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '3022');">
+          <area alt="3024" title="3024" coords="273,431,396,612" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '3024');">
+          <area alt="3026" title="3026" coords="81,366,273,612" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '3026');">
+          <area alt="3081" title="3081" coords="1167,608,1390,873" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '3081');">
+      </map>
+    </div>
+    <div id="eceb4" class="floor">
+      <img src="{% static 'floorplans/eceb/eceb4.png'%}" alt="ECE Building Floor 4" usemap="#eceb4map"/>
+      <map name="eceb4map">
+          <area alt="4026" title="4026" coords="106,402,238,650" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '4026');">
+          <area alt="4024" title="4024" coords="239,404,432,650" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '4024');">
+          <area alt="4022" title="4022" coords="475,399,669,650" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '4022');">
+          <area alt="4020" title="4020" coords="669,397,950,647" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '4020');">
+          <area alt="4020" title="4020" coords="1040,556,938,645" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '4020');">
+          <area alt="4076" title="4076" coords="1042,401,951,555" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '4076');">
+          <area alt="4074" title="4074" coords="1045,401,1237,650" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '4074');">
+          <area alt="4072" title="4072" coords="1285,401,1477,648" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '4072');">
+          <area alt="4070" title="4070" coords="1610,399,1474,648" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '4070');">
+      </map>
+    </div>
+    <div id="eceb5" class="floor">
+      <img src="{% static 'floorplans/eceb/eceb5.png'%}" alt="ECE Building Floor 5" usemap="#eceb5map"/>
+      <map name="eceb5map">
+          <area alt="5028" title="5028" coords="108,424,298,677" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '5028');">
+          <area alt="5028" title="5028" coords="298,555,483,677" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '5028');">
+          <area alt="5024" title="5024" coords="297,427,483,552" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '5024');">
+          <area alt="5022" title="5022" coords="486,430,627,550" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '5022');">
+          <area alt="5020" title="5020" coords="485,552,730,677" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '5020');">
+          <area alt="5088" title="5088" coords="677,427,775,550" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '5088');">
+          <area alt="5084" title="5084" coords="827,428,940,550" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '5084');">
+          <area alt="5082" title="5082" coords="825,552,978,677" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '5082');">
+          <area alt="5080" title="5080" coords="979,494,1103,672" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '5080');">
+          <area alt="5076" title="5076" coords="1106,491,1223,675" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '5076');">
+          <area alt="5078" title="5078" coords="1017,431,1184,488" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '5078');">
+          <area alt="5074" title="5074" coords="1228,466,1350,674" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '5074');">
+          <area alt="5072" title="5072" coords="1349,466,1472,677" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '5072');">
+          <area alt="5036" title="5036" coords="776,267,862,377" shape="rect" onclick="fillOutRoom('Electrical & Computer Eng Bldg', '5036');">
+      </map>
+    </div>
+    <script>
+      function fillOutRoom(building, room) {
+        document.getElementById('id_Building').value = building;
+        document.getElementById('id_Room').value = room;
+        document.forms[0].submit();
+      }
+    </script>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src= "{% static 'imageMapResizer.min.js' %}"></script>
+    <script type="text/javascript">
+      imageMapResize();
+    </script>
+    <script>
+      // https://codeamend.com/blog/show-hide-div-based-on-dropdown-selected-using-jquery/#:~:text=If%20you%20want%20to%20hide,of%20the%20selected%20dropdown%20option.
+      $(document).ready(function() {
+          $('#floorselection').bind('change', function() {
+            $(".floor").hide();
+            $("#" + $(this).val()).show();
+          });
+          $('#floorselection').trigger('change');
+      });
+    </script>
+
+  </body>
+</html>
