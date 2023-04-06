@@ -17,7 +17,7 @@ class ClassForm(ModelForm): # forms.Form):
             'StartTime': forms.TimeInput(attrs={'type': 'time'}),
             'EndTime': forms.TimeInput(attrs={'type': 'time'}), 
             # 'Days':
-            'Building': forms.Select(choices=BUILDINGS)
+            'Building': forms.TextInput(attrs={'id':'building', 'class': 'building'})
             
             # 'Room': 
         }
