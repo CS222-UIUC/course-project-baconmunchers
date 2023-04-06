@@ -1,0 +1,34 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-maps-dev-94349-authRole",
+      "UnauthRoleArn": "arn:aws:iam::782646874214:role/amplify-maps-dev-94349-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::782646874214:role/amplify-maps-dev-94349-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-maps-dev-94349-deployment",
+      "UnauthRoleName": "amplify-maps-dev-94349-unauthRole",
+      "StackName": "amplify-maps-dev-94349",
+      "StackId": "arn:aws:cloudformation:us-east-1:782646874214:stack/amplify-maps-dev-94349/720bafd0-d489-11ed-a26c-0e9458226617",
+      "AmplifyAppId": "d3u5giqasqn07t"
+    }
+  },
+  "maps": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-maps-maps-94510-authRole",
+      "UnauthRoleArn": "arn:aws:iam::782646874214:role/amplify-maps-maps-94510-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::782646874214:role/amplify-maps-maps-94510-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-maps-maps-94510-deployment",
+      "UnauthRoleName": "amplify-maps-maps-94510-unauthRole",
+      "StackName": "amplify-maps-maps-94510",
+      "StackId": "arn:aws:cloudformation:us-east-1:782646874214:stack/amplify-maps-maps-94510/a2075130-d489-11ed-9f85-0a02c92590b5",
+      "AmplifyAppId": "d3u5giqasqn07t"
+    },
+    "categories": {
+      "auth": {
+        "maps6c02f3a9": {},
+        "mapsa59d3652": {}
+      }
+    }
+  }
+}
