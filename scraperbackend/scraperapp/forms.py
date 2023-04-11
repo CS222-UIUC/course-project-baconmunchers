@@ -12,13 +12,20 @@ class ClassForm(ModelForm): # forms.Form):
         model = ClassInfo
         fields = ('SubjectCode', 'CourseNumber', 'CRN', 'StartTime', 'EndTime', 'Days', 'Building', 'Room')
         widgets = {
-            'CourseNumber': forms.NumberInput(attrs={'type': 'number'}),
-            'CRN': forms.NumberInput(attrs={'type': 'number'}),
+            'CourseNumber': forms.NumberInput(attrs={
+                'type': 'number',
+                'placeholder': '101',
+            }),
+            'CRN': forms.NumberInput(attrs={
+                'type': 'number',
+                'placeholder': '71617',
+            }),
             'StartTime': forms.TimeInput(attrs={'type': 'time'}),
             'EndTime': forms.TimeInput(attrs={'type': 'time'}), 
-            # 'Days':
+            'Days': forms.TextInput(attrs={
+                'placeholder': 'M, TR, MTWF, etc.'
+            }),
             'Building': forms.TextInput(attrs={'id':'building', 'class': 'building'})
-            
             # 'Room': 
         }
         labels = {
@@ -31,6 +38,7 @@ class ClassForm(ModelForm): # forms.Form):
             'Building': "Building", 
             'Room': "Room"
         }
+        """
         help_texts = {
             'SubjectCode': "<br/>",
             'CourseNumber': "3-digit Course Number <br/>", 
@@ -41,34 +49,8 @@ class ClassForm(ModelForm): # forms.Form):
             'Building': "<br/>", 
             'Room': "<br/>"
         }
+        """
         
-
-
-    """
-    SubjectCode = forms.CharField(label="Subject Code", required=False, help_text="<br/>")
-    CourseNumber = forms.IntegerField(   label="Course Number", required=False, 
-                                        help_text="3-digit Course Number <br/>",
-                                        widget=forms.NumberInput(attrs={'type': 'number'}))
-    CRN = forms.IntegerField(   label="CRN", required=False, 
-                                help_text="5-digit Class Code <br/>",
-                                widget=forms.NumberInput(attrs={'type': 'number'}))
-    StartTime = forms.TimeField(label="Start Time", required=False, 
-                                help_text="<br/>",#Formatted like 09:00AM",
-                                # input_formats=['%I:%M%p'],
-                                widget= forms.TimeInput(attrs={'type': 'time'}))
-    EndTime = forms.TimeField(  label="End Time", required=False, 
-                                help_text="<br/>", #Formatted like 04:00PM", 
-                                # input_formats=['%I:%M%p'],
-                                widget= forms.TimeInput(attrs={'type': 'time'}))
-
-    Days = forms.CharField(label="Days", required=False, help_text="Formatted like MTWRF <br/>")
-    Building = forms.CharField(label="Building", required=False, widget=forms.Select(choices=BUILDINGS)) 
-    # would probably be ideal to replace this with a drop-down list of the buildings
-    Room = forms.CharField(label="Room", required=False, )
-    # would probably be ideal to have this pop up depending on the building that was entered
-    
-    """
-
 def get_choice_list():
     print(raw_buildings)
     return raw_buildings
