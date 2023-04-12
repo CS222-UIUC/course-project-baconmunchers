@@ -11,6 +11,7 @@ class ClassForm(ModelForm): # forms.Form):
     class Meta:
         model = ClassInfo
         fields = ('SubjectCode', 'CourseNumber', 'CRN', 'StartTime', 'EndTime', 'Days', 'Building', 'Room')
+        
         widgets = {
             'CourseNumber': forms.NumberInput(attrs={
                 'type': 'number',
@@ -25,8 +26,8 @@ class ClassForm(ModelForm): # forms.Form):
             'Days': forms.TextInput(attrs={
                 'placeholder': 'M, TR, MTWF, etc.'
             }),
-            'Building': forms.TextInput(attrs={'id':'building', 'class': 'building'})
-            # 'Room': 
+            'Building': forms.TextInput(attrs={'id':'id_Building', 'class': 'building'}),
+            'Room': forms.TextInput(attrs={'id':'id_Room', 'class': 'building'})
         }
         labels = {
             'SubjectCode': "Subject Code", 
@@ -56,6 +57,6 @@ def get_choice_list():
     return raw_buildings
 class BuildingForm(forms.Form):
     # Building2 = forms.CharField(label="Building", required=False, widget=forms.Select(choices=BUILDINGS)) 
-    Building = forms.CharField(label="Building", required=False, widget= forms.TextInput(attrs={'id':'building', 'class': 'building'})) 
+    Building = forms.CharField(label="Building", required=False, widget= forms.TextInput(attrs={'id':'id_Building', 'class': 'building'})) 
 
     # forms.CharField(label="Building", required=False, widget=forms.Select(choices=BUILDINGS))
