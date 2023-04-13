@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Get Class</title>
+    <style>
+      img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <img src="{% static 'floorplans/masterMapMedium.png' %}" alt="masterMap"> -->
+    <form action="/get_building/" method="post" id="class_info_form">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+
+    <select id="floorselection">
+      <option value="">Select Floor</option>
+      <option value="mechelabb">Mechanical Engineering Lab Basement</option>
+      <option value="mechelab1">Mechanical Engineering Lab Floor 1</option>
+      <option value="mechelab2">Mechanical Engineering Lab Floor 2</option>
+      <option value="mechelab3">Mechanical Engineering Lab Floor 3</option>
+      <option value="mechelab4">Mechanical Engineering Lab Floor 4</option>
+    </select>
+    <div id="mechelabb" class="floor">
+      <img src="{% static 'floorplans/mechelab/mechelabb.png'%}" alt="Mechanical Engineering Lab Basement" usemap="#mechelabbmap"/>
+      <map name="mechelabbmap">
+      </map>
+    </div>
+    <div id="mechelab1" class="floor">
+      <img src="{% static 'floorplans/mechelab/mechelab1.png'%}" alt="Mechanical Engineering Lab Floor 1" usemap="#mechelab1map"/>
+      <map name="mechelab1map">
+          <area alt="1001" title="1001" coords="69,648,150,776" shape="rect" onclick="fillOutRoom('Mechanical Engineering Lab', '1001');">
+          <area alt="1009" title="1009" coords="70,316,154,502" shape="rect" onclick="fillOutRoom('Mechanical Engineering Lab', '1009');">
+      </map>
+    </div>
+    <div id="mechelab2" class="floor">
+      <img src="{% static 'floorplans/mechelab/mechelab2.png'%}" alt="Mechanical Engineering Lab Floor 2" usemap="#mechelab2map"/>
+      <map name="mechelab2map">
+      </map>
+    </div>
+    <div id="mechelab3" class="floor">
+      <img src="{% static 'floorplans/mechelab/mechelab3.png'%}" alt="Mechanical Engineering Lab Floor 3" usemap="#mechelab3map"/>
+      <map name="mechelab3map">
+      </map>
+    </div>
+    <div id="mechelab4" class="floor">
+      <img src="{% static 'floorplans/mechelab/mechelab4.png'%}" alt="Mechanical Engineering Lab Floor 4" usemap="#mechelab4map"/>
+      <map name="mechelab4map">
+      </map>
+    </div>
+    <script>
+      function fillOutRoom(building, room) {
+        document.getElementById('id_Building').value = building;
+        document.getElementById('id_Room').value = room;
+        document.forms[0].submit();
+      }
+    </script>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src= "{% static 'imageMapResizer.min.js' %}"></script>
+    <script type="text/javascript">
+      imageMapResize();
+    </script>
+    <script>
+      // https://codeamend.com/blog/show-hide-div-based-on-dropdown-selected-using-jquery/#:~:text=If%20you%20want%20to%20hide,of%20the%20selected%20dropdown%20option.
+      $(document).ready(function() {
+          $('#floorselection').bind('change', function() {
+            $(".floor").hide();
+            $("#" + $(this).val()).show();
+          });
+          $('#floorselection').trigger('change');
+      });
+    </script>
+
+  </body>
+</html>

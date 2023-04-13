@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Get Class</title>
+    <style>
+      img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <img src="{% static 'floorplans/masterMapMedium.png' %}" alt="masterMap"> -->
+    <form action="/get_building/" method="post" id="class_info_form">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+
+    <select id="floorselection">
+      <option value="">Select Floor</option>
+      <option value="sidneyLub">Sidney Lu Basement</option>
+      <option value="sidneyLu1">Sidney Lu Floor 1</option>
+      <option value="sidneyLu2">Sidney Lu Floor 2</option>
+      <option value="sidneyLu3">Sidney Lu Floor 3</option>
+    </select>
+    <div id="sidneyLub" class="floor">
+      <img src="{% static 'floorplans/sidneyLu/sidneyLub.png'%}" alt="Sidney Lu Basement" usemap="#sidneyLubmap"/>
+      <map name="sidneyLubmap">
+          <area alt="0023" title="0023" coords="242,29,357,217" shape="rect" onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '0023');">
+          <area alt="0023A" title="0023A" coords="358,28,486,219" shape="rect" onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '0023A');">
+          <area alt="0023B" title="0023B" coords="486,27,603,217" shape="rect" onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '0023B');">
+          <area alt="0036" title="0036" coords="33,392,169,486" shape="rect" onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '0036');">
+          <area alt="0053" title="0053" coords="645,216,840,335" shape="rect" onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '0053');">
+          <area alt="0100" title="0100" coords="1147,153,1554,450" shape="rect" onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '0100');">
+          <area alt="0045" title="0045" coords="213,220,603,334" shape="rect", onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '0045');">
+          <area alt="0055" title="0055" coords="840,218,964,336" shape="rect", onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '0055');">
+      </map>
+    </div>
+    <div id="sidneyLu1" class="floor">
+      <img src="{% static 'floorplans/sidneyLu/sidneyLu1.png'%}" alt="Sidney Lu Floor 1" usemap="#sidneyLu1map"/>
+      <map name="sidneyLu1map">
+          <area alt="1047" title="1047" coords="681,595,839,695" shape="rect" onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '1047');">
+          <area alt="1043" title="1043" coords="313,595,524,695" shape="rect" onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '1043');">
+          <area alt="1041" title="1041" coords="211,594,314,698" shape="rect" onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '1041');">
+          <area alt="1100" title="1100" coords="992,541,1332,793" shape="rect" onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '1100');">
+          <area alt="1045" title="1045" coords="524,595,679,668" shape="rect" onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '1045');">
+      </map>
+    </div>
+    <div id="sidneyLu2" class="floor">
+      <img src="{% static 'floorplans/sidneyLu/sidneyLu2.png'%}" alt="Sidney Lu Floor 2" usemap="#sidneyLu2map"/>
+      <map name="sidneyLu2map">
+          <area alt="2200" title="2200" coords="25,448,129,264" shape="rect" onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '2200');">
+          <area alt="2055" title="2055" coords="668,598,820,696" shape="rect" onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '2055');">
+          <area alt="2051" title="2051" coords="522,600,669,697" shape="rect" onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '2051');">
+          <area alt="2045" title="2045" coords="369,602,520,698" shape="rect" onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '2045');">
+          <area alt="2100" title="2100" coords="963,543,1295,790" shape="rect" onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '2100');">
+          <area alt="2208" title="2208" coords="214,153,264,238" shape="rect" onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '2208');">
+          <area alt="2204" title="2204" coords="179,239,27,36" shape="rect" onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '2204');">
+      </map>
+    </div>
+    <div id="sidneyLu3" class="floor">
+      <img src="{% static 'floorplans/sidneyLu/sidneyLu3.png'%}" alt="Sidney Lu Floor 3" usemap="#sidneyLu3map"/>
+      <map name="sidneyLu3map">
+          <area alt="3100" title="3100" coords="994,535,1121,698" shape="rect" onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '3100');">
+          <area alt="3101" title="3101" coords="1122,534,1282,700" shape="rect" onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '3101');">
+          <area alt="3049" title="3049" coords="527,589,683,686" shape="rect" onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '3049');">
+          <area alt="3045" title="3045" coords="449,586,527,687" shape="rect" onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '3045');">
+          <area alt="3043" title="3043" coords="370,588,447,687" shape="rect" onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '3043');">
+          <area alt="3035" title="3035" coords="215,585,368,687" shape="rect" onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '3035');">
+          <area alt="3051" title="3051" coords="682,588,761,688" shape="rect" onclick="fillOutRoom('Sidney Lu Mech Engr Bldg', '3051');">
+      </map>
+    </div>
+    <script>
+      function fillOutRoom(building, room) {
+        document.getElementById('id_Building').value = building;
+        document.getElementById('id_Room').value = room;
+        document.forms[0].submit();
+      }
+    </script>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src= "{% static 'imageMapResizer.min.js' %}"></script>
+    <script type="text/javascript">
+      imageMapResize();
+    </script>
+    <script>
+      // https://codeamend.com/blog/show-hide-div-based-on-dropdown-selected-using-jquery/#:~:text=If%20you%20want%20to%20hide,of%20the%20selected%20dropdown%20option.
+      $(document).ready(function() {
+          $('#floorselection').bind('change', function() {
+            $(".floor").hide();
+            $("#" + $(this).val()).show();
+          });
+          $('#floorselection').trigger('change');
+      });
+    </script>
+
+  </body>
+</html>
