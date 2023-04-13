@@ -10,7 +10,7 @@ Paste them in the order of the floors with no newlines between them.
 
 #sys.stdin = open('in.txt', 'r') #Can be used if you don't want to type everything out each time.
 
-fileName = input('Building Name(Use the same exect name as in the database): ') #Put in the exact string in the database
+fileName = input('Building Name(Use the same exact name as in the database): ') #Put in the exact string in the database
 numFloors = int(input('Number of Floors: '))
 imgFolder = input('What folder are the floor plans in?: ')
 imgFileNames = [input('What is the file name? EG: "cifb.png": ') for _ in range(numFloors)] #Please put them in order(top to bottom)
@@ -46,10 +46,18 @@ html = """{% load static %}
           object-fit: contain;
       }
     </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
   </head>
   <body>
+  
+    <nav class="navbar navbar-light" style="background-color: #e84a27;">
+  """ + f'<span class="navbar-brand mb-0 h1">&ensp;{fileName}</span>' + """
+      <a class="nav-link mb=0" href="/get_class/">Advanced Search&emsp;</a>
+    </nav>
+
     <!-- <img src="{% static 'floorplans/masterMapMedium.png' %}" alt="masterMap"> -->
-    <form action="/get_building/" method="post" id="class_info_form">
+    <form action="/get_building/" method="post" id="class_info_form" hidden>
         {% csrf_token %}
         {{ form }}
         <input type="submit" value="Submit">
@@ -100,6 +108,7 @@ html += """    <script>
       });
     </script>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   </body>
 </html>"""
 
