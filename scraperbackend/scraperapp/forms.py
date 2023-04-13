@@ -117,11 +117,12 @@ raw_buildings = [
     'Wohlers Hall'
     ]
 BUILDINGS= [(building, building) for building in raw_buildings]
-"""Django form corresponding to the ClassInfo model"""
-class ClassForm(ModelForm): # pylint: disable=too-few-public-methods   
-    #"""
-    """Meta information about the fields derived from the ClassInfo model"""
-    class Meta:
+
+class ClassForm(ModelForm): # pylint: disable=too-few-public-methods
+    """Django form corresponding to the ClassInfo model"""   
+    #"""    
+    class Meta: # pylint: disable=too-few-public-methods
+        """Meta information about the fields derived from the ClassInfo model"""
         model = ClassInfo
         fields = (
             'SubjectCode', 
@@ -172,12 +173,10 @@ class ClassForm(ModelForm): # pylint: disable=too-few-public-methods
             'Room': "<br/>"
         }
         """
-"""Django form corresponding to specifically queries for buildings"""
-class BuildingForm(forms.Form):
-    # Building2 = forms.CharField(label="Building", required=False, widget=forms.Select(choices=BUILDINGS)) 
+class BuildingForm(forms.Form): # pylint: disable=too-few-public-methods
+    """Django form corresponding to specifically queries for buildings"""
     Building = forms.CharField(
         label="Building", 
         required=False, 
         widget= forms.TextInput(attrs={'id':'id_Building', 'class': 'building'})
         ) 
-    # forms.CharField(label="Building", required=False, widget=forms.Select(choices=BUILDINGS))
