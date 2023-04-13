@@ -36,7 +36,7 @@ jobs:
         pip install urllib3
     - name: Analysing the code with pylint
       run: |
-        pylint $(git ls-files -- 'migrations' '*.py') 
+        pylint $(git ls-files '*.py' -x migrations) 
     - name: Measuring code coverage with coverage.py
       run: |
         coverage run $(git ls-files '*.py' -x migrations)
