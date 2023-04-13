@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Get Class</title>
+    <style>
+      img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <img src="{% static 'floorplans/masterMapMedium.png' %}" alt="masterMap"> -->
+    <form action="/get_building/" method="post" id="class_info_form">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+
+    <select id="floorselection">
+      <option value="">Select Floor</option>
+      <option value="loomisb">Loomis Laboratory Basement</option>
+      <option value="loomis1">Loomis Laboratory Floor 1</option>
+      <option value="loomis2">Loomis Laboratory Floor 2</option>
+      <option value="loomis3">Loomis Laboratory Floor 3</option>
+      <option value="loomis4">Loomis Laboratory Floor 4</option>
+    </select>
+    <div id="loomisb" class="floor">
+      <img src="{% static 'floorplans/loomis/loomisb.png'%}" alt="Loomis Laboratory Basement" usemap="#loomisbmap"/>
+      <map name="loomisbmap">
+          <area alt="141" title="141" coords="189,347,291,466" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '141');">
+          <area alt="151" title="151" coords="228,224,349,316" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '151');">
+          <area alt="141" title="141" coords="239,408,349,529" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '141');">
+          <area alt="151" title="151" coords="206,289,311,349" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '151');">
+          <area alt="35" title="35" coords="424,597,523,677" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '35');">
+          <area alt="64" title="64" coords="643,196,715,380" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '64');">
+          <area alt="32" title="32" coords="643,379,715,562" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '32');">
+          <area alt="36" title="36" coords="387,473,497,563" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '36');">
+          <area alt="60" title="60" coords="387,198,496,286" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '60');">
+          <area alt="18" title="18" coords="496,197,574,564" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '18');">
+      </map>
+    </div>
+    <div id="loomis1" class="floor">
+      <img src="{% static 'floorplans/loomis/loomis1.png'%}" alt="Loomis Laboratory Floor 1" usemap="#loomis1map"/>
+      <map name="loomis1map">
+          <area alt="158" title="158" coords="405,184,553,275" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '158');">
+          <area alt="144" title="144" coords="408,279,553,408" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '144');">
+          <area alt="137" title="137" coords="297,437,363,537" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '137');">
+          <area alt="151" title="151" coords="294,144,97,297" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '151');">
+          <area alt="141" title="141" coords="94,326,294,547" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '141');">
+          <area alt="139" title="139" coords="299,343,363,437" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '139');">
+          <area alt="147" title="147" coords="296,146,365,249" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '147');">
+          <area alt="136" title="136" coords="552,498,409,410" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '136');">
+          <area alt="143" title="143" coords="298,251,364,340" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '143');">
+      </map>
+    </div>
+    <div id="loomis2" class="floor">
+      <img src="{% static 'floorplans/loomis/loomis2.png'%}" alt="Loomis Laboratory Floor 2" usemap="#loomis2map"/>
+      <map name="loomis2map">
+          <area alt="222" title="222" coords="817,329,984,416" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '222');">
+          <area alt="276" title="276" coords="817,214,982,328" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '276');">
+          <area alt="258" title="258" coords="492,213,579,419" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '258');">
+          <area alt="262" title="262" coords="579,214,659,416" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '262');">
+          <area alt="264" title="264" coords="661,215,740,418" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '264');">
+          <area alt="236" title="236" coords="495,420,580,617" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '236');">
+          <area alt="234" title="234" coords="580,420,661,619" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '234');">
+          <area alt="232" title="232" coords="659,421,741,618" shape="rect" onclick="fillOutRoom('Loomis Laboratory', '232');">
+      </map>
+    </div>
+    <div id="loomis3" class="floor">
+      <img src="{% static 'floorplans/loomis/loomis3.png'%}" alt="Loomis Laboratory Floor 3" usemap="#loomis3map"/>
+      <map name="loomis3map">
+      </map>
+    </div>
+    <div id="loomis4" class="floor">
+      <img src="{% static 'floorplans/loomis/loomis4.png'%}" alt="Loomis Laboratory Floor 4" usemap="#loomis4map"/>
+      <map name="loomis4map">
+      </map>
+    </div>
+    <script>
+      function fillOutRoom(building, room) {
+        document.getElementById('id_Building').value = building;
+        document.getElementById('id_Room').value = room;
+        document.forms[0].submit();
+      }
+    </script>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src= "{% static 'imageMapResizer.min.js' %}"></script>
+    <script type="text/javascript">
+      imageMapResize();
+    </script>
+    <script>
+      // https://codeamend.com/blog/show-hide-div-based-on-dropdown-selected-using-jquery/#:~:text=If%20you%20want%20to%20hide,of%20the%20selected%20dropdown%20option.
+      $(document).ready(function() {
+          $('#floorselection').bind('change', function() {
+            $(".floor").hide();
+            $("#" + $(this).val()).show();
+          });
+          $('#floorselection').trigger('change');
+      });
+    </script>
+
+  </body>
+</html>
