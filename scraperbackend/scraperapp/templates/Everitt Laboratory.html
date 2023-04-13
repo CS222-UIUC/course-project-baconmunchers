@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Get Class</title>
+    <style>
+      img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <img src="{% static 'floorplans/masterMapMedium.png' %}" alt="masterMap"> -->
+    <form action="/get_building/" method="post" id="class_info_form">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+
+    <select id="floorselection">
+      <option value="">Select Floor</option>
+      <option value="everittb">Everitt Laboratory Basement</option>
+      <option value="everitt1">Everitt Laboratory Floor 1</option>
+      <option value="everitt2">Everitt Laboratory Floor 2</option>
+      <option value="everitt3">Everitt Laboratory Floor 3</option>
+    </select>
+    <div id="everittb" class="floor">
+      <img src="{% static 'floorplans/everitt/everittb.png'%}" alt="Everitt Laboratory Basement" usemap="#everittbmap"/>
+      <map name="everittbmap">
+          <area alt="0215" title="0215" coords="741,447,937,676" shape="rect" onclick="fillOutRoom('Everitt Laboratory', '0215');">
+          <area alt="0201" title="0201" coords="741,174,939,405" shape="rect" onclick="fillOutRoom('Everitt Laboratory', '0201');">
+      </map>
+    </div>
+    <div id="everitt1" class="floor">
+      <img src="{% static 'floorplans/everitt/everitt1.png'%}" alt="Everitt Laboratory Floor 1" usemap="#everitt1map"/>
+      <map name="everitt1map">
+          <area alt="1306" title="1306" coords="548,99,759,315" shape="rect" onclick="fillOutRoom('Everitt Laboratory', '1306');">
+          <area alt="1302" title="1302" coords="549,316,333,99" shape="rect" onclick="fillOutRoom('Everitt Laboratory', '1302');">
+      </map>
+    </div>
+    <div id="everitt2" class="floor">
+      <img src="{% static 'floorplans/everitt/everitt2.png'%}" alt="Everitt Laboratory Floor 2" usemap="#everitt2map"/>
+      <map name="everitt2map">
+          <area alt="2101" title="2101" coords="298,469,547,605" shape="rect" onclick="fillOutRoom('Everitt Laboratory', '2101');">
+          <area alt="2233" title="2233" coords="548,467,792,606" shape="rect" onclick="fillOutRoom('Everitt Laboratory', '2233');">
+          <area alt="2310" title="2310" coords="389,61,700,285" shape="rect" onclick="fillOutRoom('Everitt Laboratory', '2310');">
+      </map>
+    </div>
+    <div id="everitt3" class="floor">
+      <img src="{% static 'floorplans/everitt/everitt3.png'%}" alt="Everitt Laboratory Floor 3" usemap="#everitt3map"/>
+      <map name="everitt3map">
+          <area alt="3117" title="3117" coords="238,402,368,648" shape="rect" onclick="fillOutRoom('Everitt Laboratory', '3117');">
+          <area alt="3109" title="3109" coords="368,400,710,596" shape="rect" onclick="fillOutRoom('Everitt Laboratory', '3109');">
+          <area alt="3217" title="3217" coords="712,402,837,647" shape="rect" onclick="fillOutRoom('Everitt Laboratory', '3217');">
+          <area alt="3109" title="3109" coords="545,572,711,647" shape="rect" onclick="fillOutRoom('Everitt Laboratory', '3109');">
+      </map>
+    </div>
+    <script>
+      function fillOutRoom(building, room) {
+        document.getElementById('id_Building').value = building;
+        document.getElementById('id_Room').value = room;
+        document.forms[0].submit();
+      }
+    </script>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src= "{% static 'imageMapResizer.min.js' %}"></script>
+    <script type="text/javascript">
+      imageMapResize();
+    </script>
+    <script>
+      // https://codeamend.com/blog/show-hide-div-based-on-dropdown-selected-using-jquery/#:~:text=If%20you%20want%20to%20hide,of%20the%20selected%20dropdown%20option.
+      $(document).ready(function() {
+          $('#floorselection').bind('change', function() {
+            $(".floor").hide();
+            $("#" + $(this).val()).show();
+          });
+          $('#floorselection').trigger('change');
+      });
+    </script>
+
+  </body>
+</html>

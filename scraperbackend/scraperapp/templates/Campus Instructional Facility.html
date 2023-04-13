@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Get Class</title>
+    <style>
+      img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <img src="{% static 'floorplans/masterMapMedium.png' %}" alt="masterMap"> -->
+    <form action="/get_building/" method="post" id="class_info_form">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+
+    <select id="floorselection">
+      <option value="">Select Floor</option>
+      <option value="cifb">CIF Basement</option>
+      <option value="cif1">CIF Floor 1</option>
+      <option value="cif2">CIF Floor 2</option>
+      <option value="cif3">CIF Floor 3</option>
+      <option value="cif4">CIF Floor 4</option>
+    </select>
+
+    <!-- Image Maps generated with https://www.image-map.net/ -->
+    <div id="cifb" class="floor">
+      <img src="{% static 'floorplans/cif/cifb.png' %}" alt="CIF Basement" usemap="#cifbmap"/>
+      <map name="cifbmap">
+          <area alt="CIF 0018" title="CIF 0018" coords="164,609,492,770" shape="rect" onclick="fillOutRoom('Campus Instructional Facility', '0018');">
+          <area alt="CIF 0027" title="CIF 0027" coords="924,447,402,58" shape="rect" onclick="fillOutRoom('Campus Instructional Facility', '0027/1025');">
+          <area alt="CIF 0035" title="CIF 0035" coords="932,45,1478,449" shape="rect" onclick="fillOutRoom('Campus Instructional Facility', '0035');">
+          <area alt="CIF 0036" title="CIF 0036" coords="1208,609,1352,792" shape="rect" onclick="fillOutRoom('Campus Instructional Facility', '0036');">
+      </map>
+    </div>
+
+    
+    <div id="cif1" class="floor">
+      <img src="{% static 'floorplans/cif/cif1.png' %}" alt="CIF 1st Floor" usemap="#cif1map">
+      <map name="cif1map">
+          <area alt="CIF 1025" title="CIF 1025" coords="65,44,512,44,620,426,64,428" shape="poly" onclick="fillOutRoom('Campus Instructional Facility', '1025');">
+          <area alt="CIF 1035" title="CIF 1035" coords="922,134,1235,343" shape="rect" onclick="fillOutRoom('Campus Instructional Facility', '1035');">
+          <area alt="CIF 1038" title="CIF 1038" coords="1202,601,1477,777" shape="rect" onclick="fillOutRoom('Campus Instructional Facility', '1038');">
+      </map>
+    </div>
+    
+    <div id="cif2" class="floor">
+      <img src="{% static 'floorplans/cif/cif2.png' %}" alt="CIF 2nd Floor" usemap="#cif2map">
+      <map name="cif2map">
+          <area alt="CIF 2018" title="CIF 2018" coords="157,608,433,789" shape="rect" onclick="fillOutRoom('Campus Instructional Facility', '2018');">
+          <area alt="CIF 2025" title="CIF 2025" coords="108,149,251,394" shape="rect" onclick="fillOutRoom('Campus Instructional Facility', '2025');">
+          <area alt="CIF 2035" title="CIF 2035" coords="905,43,1416,445" shape="rect" onclick="fillOutRoom('Campus Instructional Facility', '2035');">
+          <area alt="CIF 2036" title="CIF 2036" coords="1202,606,1477,789" shape="rect" onclick="fillOutRoom('Campus Instructional Facility', '2036');">
+          <area alt="CIF 2039" title="CIF 2039" coords="1422,41,1661,442" shape="rect" onclick="fillOutRoom('Campus Instructional Facility', '2039');">
+      </map>
+    </div>
+
+    <div id="cif3" class="floor">
+      <img src="{% static 'floorplans/cif/cif3.png' %}" alt="CIF 3rd Floor" usemap="#cif3map">
+      <map name="cif3map">
+          <area alt="CIF 3018" title="CIF 3018" coords="185,631,457,813" shape="rect" onclick="fillOutRoom('Campus Instructional Facility', '3018');">
+          <area alt="CIF 3025" title="CIF 3025" coords="32,63,309,448" shape="rect" onclick="fillOutRoom('Campus Instructional Facility', '3025');">
+          <area alt="CIF 3031" title="CIF 3031" coords="317,65,840,465" shape="rect" onclick="fillOutRoom('Campus Instructional Facility', '3031');">
+          <area alt="CIF 3038" title="CIF 3038" coords="1226,631,1502,814" shape="rect" onclick="fillOutRoom('Campus Instructional Facility', '3038');">
+          <area alt="CIF 3039" title="CIF 3039" coords="848,66,1685,465" shape="rect" onclick="fillOutRoom('Campus Instructional Facility', '3039');">
+      </map>
+    </div>
+
+    <div id="cif4" class="floor">
+      <img src="{% static 'floorplans/cif/cif4.png' %}" alt="CIF 4th Floor" usemap="#cif4map">
+      <map name="cif4map">
+          <area alt="CIF 4018" title="CIF 4018" coords="190,603,468,790" shape="rect" onclick="fillOutRoom('Campus Instructional Facility', '4018');">
+          <area alt="CIF 4025" title="CIF 4025" coords="44,39,390,425" shape="rect" onclick="fillOutRoom('Campus Instructional Facility', '4025');">
+          <area alt="CIF 4029" title="CIF 4029" coords="396,41,849,440" shape="rect" onclick="fillOutRoom('Campus Instructional Facility', '4029');">
+          <area alt="CIF 4031" title="CIF 4031" coords="856,39,1201,440" shape="rect" onclick="fillOutRoom('Campus Instructional Facility', '4031');">
+          <area alt="CIF 4035" title="CIF 4035" coords="1211,37,1451,442" shape="rect" onclick="fillOutRoom('Campus Instructional Facility', '4035');">
+          <area alt="CIF 4036" title="CIF 4036" coords="1237,605,1509,789" shape="rect" onclick="fillOutRoom('Campus Instructional Facility', '4036');">
+          <area alt="CIF 4039" title="CIF 4039" coords="1457,38,1696,440" shape="rect" onclick="fillOutRoom('Campus Instructional Facility', '4039');">
+      </map>
+    </div>
+    
+    <script>
+      function fillOutRoom(building, room) {
+        document.getElementById('id_Building').value = building;
+        document.getElementById('id_Room').value = room;
+        document.forms[0].submit();
+      }
+    </script>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src= "{% static 'imageMapResizer.min.js' %}"></script>
+    <script type="text/javascript">
+      imageMapResize();
+    </script>
+    <script>
+      // https://codeamend.com/blog/show-hide-div-based-on-dropdown-selected-using-jquery/#:~:text=If%20you%20want%20to%20hide,of%20the%20selected%20dropdown%20option.
+      $(document).ready(function() {
+          $('#floorselection').bind('change', function() {
+            $(".floor").hide();
+            $("#" + $(this).val()).show();
+          });
+          $('#floorselection').trigger('change');
+      });
+    </script>
+
+  </body>
+</html>

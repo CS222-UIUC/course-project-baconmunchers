@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Get Class</title>
+    <style>
+      img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <img src="{% static 'floorplans/masterMapMedium.png' %}" alt="masterMap"> -->
+    <form action="/get_building/" method="post" id="class_info_form">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+
+    <select id="floorselection">
+      <option value="">Select Floor</option>
+      <option value="siebelCSb">Siebel Center For CS Basement</option>
+      <option value="siebelCS1">Siebel Center For CS Floor 1</option>
+      <option value="siebelCS2">Siebel Center For CS Floor 2</option>
+      <option value="siebelCS3">Siebel Center For CS Floor 3</option>
+      <option value="siebelCS4">Siebel Center For CS Floor 4</option>
+    </select>
+    <div id="siebelCSb" class="floor">
+      <img src="{% static 'floorplans/siebelCS/siebelCSb.png'%}" alt="Siebel Center For CS Basement" usemap="#siebelCSbmap"/>
+      <map name="siebelCSbmap">
+          <area alt="0216" title="0216" coords="667,1228,934,1572" shape="rect" onclick="fillOutRoom('Siebel Center for Comp Sci', '0216');">
+          <area alt="0218" title="0218" coords="934,1299,1065,1562" shape="rect" onclick="fillOutRoom('Siebel Center for Comp Sci', '0218');">
+          <area alt="0220" title="0220" coords="1065,1297,1202,1564" shape="rect" onclick="fillOutRoom('Siebel Center for Comp Sci', '0220');">
+          <area alt="0222" title="0222" coords="1204,1299,1333,1564" shape="rect" onclick="fillOutRoom('Siebel Center for Comp Sci', '0222');">
+          <area alt="0224" title="0224" coords="1333,1226,1606,1564" shape="rect" onclick="fillOutRoom('Siebel Center for Comp Sci', '0224');">
+      </map>
+    </div>
+    <div id="siebelCS1" class="floor">
+      <img src="{% static 'floorplans/siebelCS/siebelCS1.png'%}" alt="Siebel Center For CS Floor 1" usemap="#siebelCS1map"/>
+      <map name="siebelCS1map">
+          <area alt="1404" title="1404" coords="1449,424,1963,977" shape="rect" onclick="fillOutRoom('Siebel Center for Comp Sci', '1404');">
+          <area alt="1302" title="1302" coords="1131,1248,1368,1410" shape="rect" onclick="fillOutRoom('Siebel Center for Comp Sci', '1302');">
+          <area alt="1304" title="1304" coords="1372,1264,1614,1410" shape="rect" onclick="fillOutRoom('Siebel Center for Comp Sci', '1304');">
+          <area alt="1214" title="1214" coords="847,1248,1071,1412" shape="rect" onclick="fillOutRoom('Siebel Center for Comp Sci', '1214');">
+      </map>
+    </div>
+    <div id="siebelCS2" class="floor">
+      <img src="{% static 'floorplans/siebelCS/siebelCS2.png'%}" alt="Siebel Center For CS Floor 2" usemap="#siebelCS2map"/>
+      <map name="siebelCS2map">
+          <area alt="2406" title="2406" coords="1809,809,2209,1129" shape="rect" onclick="fillOutRoom('Siebel Center for Comp Sci', '2406');">
+      </map>
+    </div>
+    <div id="siebelCS3" class="floor">
+      <img src="{% static 'floorplans/siebelCS/siebelCS3.png'%}" alt="Siebel Center For CS Floor 3" usemap="#siebelCS3map"/>
+      <map name="siebelCS3map">
+      </map>
+    </div>
+    <div id="siebelCS4" class="floor">
+      <img src="{% static 'floorplans/siebelCS/siebelCS4.png'%}" alt="Siebel Center For CS Floor 4" usemap="#siebelCS4map"/>
+      <map name="siebelCS4map">
+      </map>
+    </div>
+    <script>
+      function fillOutRoom(building, room) {
+        document.getElementById('id_Building').value = building;
+        document.getElementById('id_Room').value = room;
+        document.forms[0].submit();
+      }
+    </script>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src= "{% static 'imageMapResizer.min.js' %}"></script>
+    <script type="text/javascript">
+      imageMapResize();
+    </script>
+    <script>
+      // https://codeamend.com/blog/show-hide-div-based-on-dropdown-selected-using-jquery/#:~:text=If%20you%20want%20to%20hide,of%20the%20selected%20dropdown%20option.
+      $(document).ready(function() {
+          $('#floorselection').bind('change', function() {
+            $(".floor").hide();
+            $("#" + $(this).val()).show();
+          });
+          $('#floorselection').trigger('change');
+      });
+    </script>
+
+  </body>
+</html>

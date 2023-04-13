@@ -10,9 +10,14 @@ requests = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
 mysqlclient = "*"
+django-extensions = "*"
+pysqlite3 = "*"
+pipfile = "*"
+django-autocomplete-light = "*"
+asgiref = "*"
+idna = "*"
 
 [dev-packages]
 
 [requires]
 python_version = "3.9"
- 
