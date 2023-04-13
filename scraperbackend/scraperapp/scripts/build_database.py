@@ -104,7 +104,7 @@ def run():
             classes[subject_code] = [file.readline()[:-1] for _ in range(int(class_count))]
             print(subject_code, class_count)
 #clear ClassSections.txt
-	"""
+    """
 	with open("ClassSections.txt",'w') as file:
 		pass
 
