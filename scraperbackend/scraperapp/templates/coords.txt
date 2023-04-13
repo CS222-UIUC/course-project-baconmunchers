@@ -1,19 +1,20 @@
 <map name="image-map">
-    <area target="" alt="0215" title="0215" href="" coords="741,447,937,676" shape="rect">
-    <area target="" alt="0201" title="0201" href="" coords="741,174,939,405" shape="rect">
+    <area target="" alt="0216" title="0216" href="" coords="667,1228,934,1572" shape="rect">
+    <area target="" alt="0218" title="0218" href="" coords="934,1299,1065,1562" shape="rect">
+    <area target="" alt="0220" title="0220" href="" coords="1065,1297,1202,1564" shape="rect">
+    <area target="" alt="0222" title="0222" href="" coords="1204,1299,1333,1564" shape="rect">
+    <area target="" alt="0224" title="0224" href="" coords="1333,1226,1606,1564" shape="rect">
 </map>
 <map name="image-map">
-    <area target="" alt="1306" title="1306" href="" coords="548,99,759,315" shape="rect">
-    <area target="" alt="1302" title="1302" href="" coords="549,316,333,99" shape="rect">
+    <area target="" alt="1404" title="1404" href="" coords="1449,424,1963,977" shape="rect">
+    <area target="" alt="1302" title="1302" href="" coords="1131,1248,1368,1410" shape="rect">
+    <area target="" alt="1304" title="1304" href="" coords="1372,1264,1614,1410" shape="rect">
+    <area target="" alt="1214" title="1214" href="" coords="847,1248,1071,1412" shape="rect">
 </map>
 <map name="image-map">
-    <area target="" alt="2101" title="2101" href="" coords="298,469,547,605" shape="rect">
-    <area target="" alt="2233" title="2233" href="" coords="548,467,792,606" shape="rect">
-    <area target="" alt="2310" title="2310" href="" coords="389,61,700,285" shape="rect">
+    <area target="" alt="2406" title="2406" href="" coords="1809,809,2209,1129" shape="rect">
 </map>
 <map name="image-map">
-    <area target="" alt="3117" title="3117" href="" coords="238,402,368,648" shape="rect">
-    <area target="" alt="3109" title="3109" href="" coords="368,400,710,596" shape="rect">
-    <area target="" alt="3217" title="3217" href="" coords="712,402,837,647" shape="rect">
-    <area target="" alt="3109" title="3109" href="" coords="545,572,711,647" shape="rect">
+</map>
+<map name="image-map">
 </map>
