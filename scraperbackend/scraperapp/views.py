@@ -75,7 +75,7 @@ def get_class(request):
 def building_page(request):
     form = ClassForm(request.POST)
     if form.is_valid():
-        # print(set(list(ClassInfo.objects.values_list('Building', flat=True))))
+        print(list(set(ClassInfo.objects.values_list('SubjectCode', flat=True))))
         SubjectCode = form.cleaned_data['SubjectCode']
         CourseNumber = form.cleaned_data['CourseNumber']
         CRN = form.cleaned_data['CRN']
@@ -113,6 +113,7 @@ def building_page(request):
 
 def main_map_page(request):
     form = BuildingForm(request.POST)
+    # subjectcodes = list(set(ClassInfo.objects.values_list('SubjectCode', flat=True)))
     print('form made')
     if form.is_valid():
         print('form valid')
@@ -124,6 +125,9 @@ def main_map_page(request):
 
 def get_building(request):
     print(request)
+    subjectcodes = list(set(ClassInfo.objects.values_list('SubjectCode', flat=True)))
+    subjectcodes.sort()
+    print(subjectcodes)
     if request.method == 'POST' and len(request.POST) == 2:
         return main_map_page(request)
     if request.method == 'POST' and len(request.POST) > 2:
