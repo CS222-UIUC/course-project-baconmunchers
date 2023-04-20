@@ -11,6 +11,13 @@
           object-fit: contain;
       }
     </style>
+    <script
+    src="https://code.jquery.com/jquery-3.6.4.min.js"
+    integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
   </head>
   <body>
@@ -29,6 +36,16 @@
         </table>
         <input type="submit" value="Submit">
     </form>
+    <script>    
+      $( "#id_SubjectCode" ).autocomplete({
+        source: ['AAS', 'ABE', 'ACCY', 'ACE', 'ACES', 'ADV', 'AE', 'AFAS', 'AFRO', 'AFST', 'AGCM', 'AGED', 'AHS', 'AIS', 'ANSC', 'ANTH', 'ARAB', 'ARCH', 'ART', 'ARTD', 'ARTE', 'ARTF', 'ARTH', 'ARTJ', 'ARTS', 'ASRM', 'ASTR', 'ATMS', 'BADM', 'BASQ', 'BCOG', 'BCS', 'BDI', 'BIOC', 'BIOE', 'BSE', 'BTW', 'BUS', 'CB', 'CDB', 'CEE', 'CHBE', 'CHEM', 'CHIN', 'CHLH', 'CHP', 'CI', 'CLCV', 'CMN', 'CPSC', 'CS', 'CSE', 'CW', 'CWL', 'CZCH', 'DANC', 'EALC', 'ECE', 'ECON', 'EDPR', 'EDUC', 'EIL', 'ENG', 'ENGL', 'ENVS', 'EPOL', 'EPS', 'EPSY', 'ERAM', 'ESE', 'ESL', 'ETMA', 'EURO', 'FAA', 'FIN', 'FLTE', 'FR', 'FSHN', 'GC', 'GEOL', 'GER', 'GGIS', 'GLBL', 'GRK', 'GRKM', 'GS', 'GSD', 'GWS', 'HDFS', 'HEBR', 'HIST', 'HNDI', 'HORT', 'HT', 'HUM', 'IB', 'IE', 'IHLT', 'INFO', 'IS', 'ITAL', 'JAPN', 'JOUR', 'JS', 'KIN', 'KOR', 'LA', 'LAS', 'LAST', 'LAT', 'LAW', 'LEAD', 'LER', 'LING', 'LLS', 'MACS', 'MATH', 'MCB', 'MDIA', 'MDVL', 'ME', 'MICR', 'MILS', 'MIP', 'MSE', 'MUS', 'MUSC', 'MUSE', 'NE', 'NEUR', 'NPRE', 'NRES', 'NS', 'NUTR', 'PATH', 'PERS', 'PHIL', 'PHYS', 'PLPA', 'POL', 'PORT', 'PS', 'PSM', 'PSYC', 'QUEC', 'REES', 'REHB', 'REL', 'RHET', 'RST', 'RUSS', 'SAME', 'SCAN', 'SE', 'SHS', 'SLAV', 'SOC', 'SOCW', 'SPAN', 'SPED', 'STAT', 'SWAH', 'TAM', 'TE', 'THEA', 'TMGT', 'TRST', 'TURK', 'UKR', 'UP', 'VCM', 'VM', 'WGGP', 'WRIT']
+      });
+      </script>
+    <script>    
+      $( "#id_Building" ).autocomplete({
+        source: ['1010 W Nevada', '1203 1/2 W Nevada', '1205 W Nevada', '1205 W Oregon', '1207 W Oregon', '1208 W Nevada', '614 E. Daniel', '901 W Oregon', '907 1/2 W Nevada', 'ACES Lib, Info & Alum Ctr', 'Activities & Recreation Center', 'Agricultural Engr Sciences Bld', 'Allen Residence Hall', 'Altgeld Hall', 'Animal Sciences Laboratory', 'Architecture Annex', 'Architecture Building', 'Armory', 'Art and Design Building', 'Astronomy Building', 'Beckman Institute', 'Bevier Hall', 'Burrill Hall', 'Business Instructional Fac', 'Campbell Hall', 'Campus Instructional Facility', 'Campus Recreation Center East', 'Ceramics Building', 'Ceramics Kiln House', 'Chemical and Life Sci Lab', 'Chemistry Annex', 'Chicago IL', 'Child Development Laboratory', 'Christopher Hall', 'Civil Eng Hydrosystems Lab', 'Dance Studio', 'Danville IL', 'Davenport Hall', 'David Kinley Hall', 'Digital Computer Laboratory', 'Discovery Partners Inst. CHI', 'Education Building', 'Electrical & Computer Eng Bldg', 'Engineering Hall', 'Engineering Sciences Building', 'English Building', 'Everitt Laboratory', 'Expanded Child Dev Lab', 'FAR Meeting Space', 'Flagg Hall', 'Foellinger Auditorium', 'Foreign Languages Building', 'Freer Hall', 'GYM Campus Recreation Center East', 'Grad Sch of Lib & Info Science', 'Grainger Engineering Library', 'Gregory Hall', 'Harding Band Building', 'Henry Administration Bldg', 'Huff Hall', 'Ice Arena', 'Illini Center', 'Illini Union', 'Illinois Street Residence Lng', 'Inst Labor &  Industrial Rel', 'Institute for Genomic Biology', 'Japan House', 'Krannert Art Museum', 'Krannert Center for Perf Arts', 'LAB Art-East Annex, Studio 2', 'Law Building', 'Library', 'Lincoln Hall', 'Loomis Laboratory', 'Materials Science & Eng Bld', 'Meat Science Laboratory', 'Mechanical Engineering Lab', 'Medical Sciences Building', 'Micro & Nanotechnology Lab', 'Mumford Hall', 'Music Building', 'National Soybean Res Ctr', 'Natural History Building', 'Newmark Civil Engineering Bldg', 'Noble Hall', 'Noyes Laboratory', 'Outdoor Space', 'Pennsylvania Lounge Bld - PAR', 'Plant Sciences Laboratory', 'Psychology Building', 'Richmond Studio', 'Roger Adams Laboratory', 'Seitz Materials Research Lab', 'Sidney Lu Mech Engr Bldg', 'Siebel Center for Comp Sci', 'Siebel Center for Design', 'Smith Memorial Hall', 'South Farms', 'Speech & Hearing Science Bldg', 'Spurlock Museum', 'Stock Pavilion', 'Student Dining & Res Program', 'Talbot Laboratory', 'Temple Hoyne Buell Hall', 'Transportation Building', 'Turner Hall', 'Vet Med Basic Sciences Bldg', 'Veterinary Teaching Hospital', 'Weston Hall', 'Wohlers Hall']
+      });
+      </script>
     
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
    

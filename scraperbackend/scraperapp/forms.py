@@ -135,6 +135,10 @@ class ClassForm(ModelForm): # pylint: disable=too-few-public-methods
             'Room'
             )
         widgets = {
+            'SubjectCode': forms.TextInput(attrs={
+                'placeholder': 'CHEM',
+                'id': 'id_SubjectCode'
+            }),
             'CourseNumber': forms.NumberInput(attrs={
                 'type': 'number',
                 'placeholder': '101',

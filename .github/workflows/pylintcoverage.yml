@@ -39,5 +39,5 @@ jobs:
         pylint $(git ls-files '*.py') --rcfile=.pylintrc
     - name: Measuring code coverage with coverage.py
       run: |
-        coverage run $(git ls-files '*.py')
+        coverage run $(git ls-files '*.py') --exclude */migrations
         coverage report -m
