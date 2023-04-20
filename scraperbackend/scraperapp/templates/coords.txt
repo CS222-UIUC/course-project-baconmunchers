@@ -1,37 +1,34 @@
 <map name="image-map">
-    <area target="" alt="141" title="141" href="" coords="189,347,291,466" shape="rect">
-    <area target="" alt="151" title="151" href="" coords="228,224,349,316" shape="rect">
-    <area target="" alt="141" title="141" href="" coords="239,408,349,529" shape="rect">
-    <area target="" alt="151" title="151" href="" coords="206,289,311,349" shape="rect">
-    <area target="" alt="35" title="35" href="" coords="424,597,523,677" shape="rect">
-    <area target="" alt="64" title="64" href="" coords="643,196,715,380" shape="rect">
-    <area target="" alt="32" title="32" href="" coords="643,379,715,562" shape="rect">
-    <area target="" alt="36" title="36" href="" coords="387,473,497,563" shape="rect">
-    <area target="" alt="60" title="60" href="" coords="387,198,496,286" shape="rect">
-    <area target="" alt="18" title="18" href="" coords="496,197,574,564" shape="rect">
+    <area target="" alt="DQ" title="DQ" href="" coords="68,50,2898,1854" shape="rect">
 </map>
 <map name="image-map">
-    <area target="" alt="158" title="158" href="" coords="405,184,553,275" shape="rect">
-    <area target="" alt="144" title="144" href="" coords="408,279,553,408" shape="rect">
-    <area target="" alt="137" title="137" href="" coords="297,437,363,537" shape="rect">
-    <area target="" alt="151" title="151" href="" coords="294,144,97,297" shape="rect">
-    <area target="" alt="141" title="141" href="" coords="94,326,294,547" shape="rect">
-    <area target="" alt="139" title="139" href="" coords="299,343,363,437" shape="rect">
-    <area target="" alt="147" title="147" href="" coords="296,146,365,249" shape="rect">
-    <area target="" alt="136" title="136" href="" coords="552,498,409,410" shape="rect">
-    <area target="" alt="143" title="143" href="" coords="298,251,364,340" shape="rect">
+    <area target="" alt="147" title="147" href="" coords="572,579,701,660" shape="rect">
+    <area target="" alt="141" title="141" href="" coords="573,350,700,429" shape="rect">
+    <area target="" alt="143" title="143" href="" coords="574,431,700,504" shape="rect">
+    <area target="" alt="173" title="173" href="" coords="220,755,291,852" shape="rect">
+    <area target="" alt="145" title="145" href="" coords="574,508,700,579" shape="rect">
+    <area target="" alt="159" title="159" href="" coords="487,754,559,854" shape="rect">
+    <area target="" alt="169" title="169" href="" coords="289,755,368,854" shape="rect">
+    <area target="" alt="165" title="165" href="" coords="367,753,442,849" shape="rect">
+    <area target="" alt="155" title="155" href="" coords="560,754,635,854" shape="rect">
+    <area target="" alt="150" title="150" href="" coords="638,714,701,856" shape="rect">
+    <area target="" alt="178" title="178" href="" coords="159,710,217,854" shape="rect">
 </map>
 <map name="image-map">
-    <area target="" alt="222" title="222" href="" coords="817,329,984,416" shape="rect">
-    <area target="" alt="276" title="276" href="" coords="817,214,982,328" shape="rect">
-    <area target="" alt="258" title="258" href="" coords="492,213,579,419" shape="rect">
-    <area target="" alt="262" title="262" href="" coords="579,214,659,416" shape="rect">
-    <area target="" alt="264" title="264" href="" coords="661,215,740,418" shape="rect">
-    <area target="" alt="236" title="236" href="" coords="495,420,580,617" shape="rect">
-    <area target="" alt="234" title="234" href="" coords="580,420,661,619" shape="rect">
-    <area target="" alt="232" title="232" href="" coords="659,421,741,618" shape="rect">
+    <area target="" alt="243" title="243" href="" coords="608,437,745,517" shape="rect">
+    <area target="" alt="245" title="245" href="" coords="609,520,745,686" shape="rect">
+    <area target="" alt="241" title="241" href="" coords="610,354,744,435" shape="rect">
 </map>
 <map name="image-map">
+    <area target="" alt="341" title="341" href="" coords="665,368,816,462" shape="rect">
+    <area target="" alt="343" title="343" href="" coords="666,463,817,553" shape="rect">
+    <area target="" alt="345" title="345" href="" coords="666,555,821,645" shape="rect">
+    <area target="" alt="347" title="347" href="" coords="667,647,822,743" shape="rect">
+    <area target="" alt="314" title="314" href="" coords="323,406,620,701" shape="rect">
 </map>
 <map name="image-map">
+    <area target="" alt="441" title="441" href="" coords="229,106,519,283" shape="rect">
+    <area target="" alt="443" title="443" href="" coords="228,287,519,460" shape="rect">
+    <area target="" alt="445" title="445" href="" coords="225,464,516,629" shape="rect">
+    <area target="" alt="447" title="447" href="" coords="228,633,517,817" shape="rect">
 </map>

@@ -39,37 +39,42 @@
       </script>
     <select id="floorselection">
       <option value="">Select Floor</option>
-      <option value="mechelabb">Mechanical Engineering Lab Basement</option>
-      <option value="mechelab1">Mechanical Engineering Lab Floor 1</option>
-      <option value="mechelab2">Mechanical Engineering Lab Floor 2</option>
-      <option value="mechelab3">Mechanical Engineering Lab Floor 3</option>
-      <option value="mechelab4">Mechanical Engineering Lab Floor 4</option>
+      <option value="talbotb">Tablot Laboratory Basement</option>
+      <option value="talbot1">Tablot Laboratory Floor 1</option>
+      <option value="talbot2">Tablot Laboratory Floor 2</option>
+      <option value="talbot3">Tablot Laboratory Floor 3</option>
     </select>
-    <div id="mechelabb" class="floor">
-      <img src="{% static 'floorplans/mechelab/mechelabb.PNG'%}" alt="Mechanical Engineering Lab Basement" usemap="#mechelabbmap"/>
-      <map name="mechelabbmap">
+    <div id="talbotb" class="floor">
+      <img src="{% static 'floorplans/talbot/talbotb.PNG'%}" alt="Tablot Laboratory Basement" usemap="#talbotbmap"/>
+      <map name="talbotbmap">
       </map>
     </div>
-    <div id="mechelab1" class="floor">
-      <img src="{% static 'floorplans/mechelab/mechelab1.PNG'%}" alt="Mechanical Engineering Lab Floor 1" usemap="#mechelab1map"/>
-      <map name="mechelab1map">
-          <area alt="1001" title="1001" coords="69,648,150,776" shape="rect" onclick="fillOutRoom('Mechanical Engineering Lab', '1001');">
-          <area alt="1009" title="1009" coords="70,316,154,502" shape="rect" onclick="fillOutRoom('Mechanical Engineering Lab', '1009');">
+    <div id="talbot1" class="floor">
+      <img src="{% static 'floorplans/talbot/talbot1.PNG'%}" alt="Tablot Laboratory Floor 1" usemap="#talbot1map"/>
+      <map name="talbot1map">
+          <area alt="126" title="126" coords="19,21,193,259" shape="rect" onclick="fillOutRoom('Talbot Laboratory', '126');">
+          <area alt="101B" title="101B" coords="428,598,572,672" shape="rect" onclick="fillOutRoom('Talbot Laboratory', '101B');">
+          <area alt="101C" title="101C" coords="426,521,570,596" shape="rect" onclick="fillOutRoom('Talbot Laboratory', '101C');">
+          <area alt="101A" title="101A" coords="427,675,560,755" shape="rect" onclick="fillOutRoom('Talbot Laboratory', '101A');">
+          <area alt="135" title="135" coords="137,281,280,358" shape="rect" onclick="fillOutRoom('Talbot Laboratory', '135');">
+          <area alt="131" title="131" coords="136,361,281,436" shape="rect" onclick="fillOutRoom('Talbot Laboratory', '131');">
+          <area alt="103" title="103" coords="538,282,665,431" shape="rect" onclick="fillOutRoom('Talbot Laboratory', '103');">
       </map>
     </div>
-    <div id="mechelab2" class="floor">
-      <img src="{% static 'floorplans/mechelab/mechelab2.PNG'%}" alt="Mechanical Engineering Lab Floor 2" usemap="#mechelab2map"/>
-      <map name="mechelab2map">
+    <div id="talbot2" class="floor">
+      <img src="{% static 'floorplans/talbot/talbot2.PNG'%}" alt="Tablot Laboratory Floor 2" usemap="#talbot2map"/>
+      <map name="talbot2map">
+          <area alt="201" title="201" coords="687,9,900,209" shape="rect" onclick="fillOutRoom('Talbot Laboratory', '201');">
+          <area alt="200" title="200" coords="689,211,767,315" shape="rect" onclick="fillOutRoom('Talbot Laboratory', '200');">
+          <area alt="201" title="201" coords="901,210,816,309" shape="rect" onclick="fillOutRoom('Talbot Laboratory', '201');">
+          <area alt="206" title="206" coords="458,309,769,489" shape="rect" onclick="fillOutRoom('Talbot Laboratory', '206');">
+          <area alt="211B" title="211B" coords="485,591,657,772" shape="rect" onclick="fillOutRoom('Talbot Laboratory', '211B');">
+          <area alt="211C" title="211C" coords="485,775,656,881" shape="rect" onclick="fillOutRoom('Talbot Laboratory', '211C');">
       </map>
     </div>
-    <div id="mechelab3" class="floor">
-      <img src="{% static 'floorplans/mechelab/mechelab3.PNG'%}" alt="Mechanical Engineering Lab Floor 3" usemap="#mechelab3map"/>
-      <map name="mechelab3map">
-      </map>
-    </div>
-    <div id="mechelab4" class="floor">
-      <img src="{% static 'floorplans/mechelab/mechelab4.PNG'%}" alt="Mechanical Engineering Lab Floor 4" usemap="#mechelab4map"/>
-      <map name="mechelab4map">
+    <div id="talbot3" class="floor">
+      <img src="{% static 'floorplans/talbot/talbot3.PNG'%}" alt="Tablot Laboratory Floor 3" usemap="#talbot3map"/>
+      <map name="talbot3map">
       </map>
     </div>
     <script>
