@@ -17,8 +17,8 @@ def get_class_links():
     subjects_page_soup = BeautifulSoup(subjects_page.text, 'html.parser')
     subjects_page_links = [str(i.get('href')) for i in subjects_page_soup.find_all('a')]
     subject_links_regex = re.compile(f'/schedule/{year}/{season}/.*')
-    subject_links = [course_explorer + link for link in subjects_page_links 
-                    if not re.match(subject_links_regex, link) is None]
+    subject_links = [course_explorer + link for link in subjects_page_links
+    						if not re.match(subject_links_regex, link) is None]
 
 	#build dictionary of subject codes to lists of class linkes
     classes = {}
@@ -43,7 +43,8 @@ def get_class_links():
                 file.write(f"{link}\n")
 
 """Get non-online non-asynchronous sections of a class, given course explorer url.
-Data returned as list of sections, each section formatted as [crn, start, end, day, building, room]."""
+Data returned as list of sections
+Each section is formatted as [crn, start, end, day, building, room]."""
 def get_sections_from_class(link):
 
     subject_code, course_number = link.split('/')[-2:]
@@ -67,17 +68,20 @@ def get_sections_from_class(link):
         days = [i.text.strip() for i in day_soup.find_all('div')]
         locations = [i.text for i in location_soup.find_all('div')]
         for time, day, location in zip(times, days, locations):
-            if time != 'ARRANGED' and day != 'n.a.' and location != 'n.a.' and location != 'Location Pending':
+            if time != 'ARRANGED' and 
+            			day != 'n.a.' and 
+            			location != 'n.a.' and 
+            			location != 'Location Pending':
                 start, end = time.split(' - ', 1)
                 if location == 'MAC GYM Campus Recreation Center East':
                     room, building = 'MAC GYM', 'Campus Recreation Center East'
 					# TODO: are there any more minor exceptions like this for when we re-generate the database
                 else:
                     room, building = location.split(' ', 1)
-                sections.append([subject_code, course_number, crn, start, end, day, building, room])	
+                sections.append([subject_code, course_number, crn, start, end, day, building, room])
     return sections
 
-"""take a section given by get_sections_from_class and add it to the MySQL database."""
+"""Take a section given by get_sections_from_class and add it to the MySQL database."""
 def input_into_SQLite_database(section):
 	input = ClassInfo(	SubjectCode=section[0], \
 					    CourseNumber=section[1], \
@@ -110,13 +114,7 @@ def run():
 
 
 		#input every class section into MySQL Database
-
-		for subject_code in classes:
-			for link in classes[subject_code]:
-				sections = get_sections_from_class(link)
-				for section in sections:
-					input_into_SQLite_database(section)
-	"""
+		
 	#input every class section into SQLite Database
     for subject_code in classes:
         print(subject_code)
