@@ -68,10 +68,7 @@ def get_sections_from_class(link):
         days = [i.text.strip() for i in day_soup.find_all('div')]
         locations = [i.text for i in location_soup.find_all('div')]
         for time, day, location in zip(times, days, locations):
-            if time != 'ARRANGED' and 
-            			day != 'n.a.' and 
-            			location != 'n.a.' and 
-            			location != 'Location Pending':
+            if time != 'ARRANGED' and day != 'n.a.' and location != 'n.a.' and location != 'Location Pending':
                 start, end = time.split(' - ', 1)
                 if location == 'MAC GYM Campus Recreation Center East':
                     room, building = 'MAC GYM', 'Campus Recreation Center East'
