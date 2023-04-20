@@ -1,3 +1,0 @@
-<map name="image-map">
-    <area target="" alt="" title="" href="" coords="172,134,255,261" shape="rect">
-</map>
