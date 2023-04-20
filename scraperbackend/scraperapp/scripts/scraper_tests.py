@@ -65,6 +65,29 @@ class TestStringMethods(unittest.TestCase):
             []
         )
 
+    def test_cs_447(self):
+        self.assertEqual(
+            get_sections_from_class('https://courses.illinois.edu/schedule/2023/spring/CS/447'),
+            [
+                ['CS', '447', '74372', '02:00PM', '03:15PM', 'WF', 'Siebel Center for Comp Sci', '1404'], 
+                ['CS', '447', '74373', '02:00PM', '03:15PM', 'WF', 'Siebel Center for Comp Sci', '1404']
+            ]
+        )
+
+    def test_zulu_202(self):
+        self.assertEqual(
+            get_sections_from_class('https://courses.illinois.edu/schedule/2023/spring/ZULU/202'),
+            []
+        )
+
+    def test_aas_539(self):
+        self.assertEqual(
+            get_sections_from_class('https://courses.illinois.edu/schedule/2023/spring/AAS/539'),
+            [
+                ['AAS', '539', '65078', '02:00PM', '04:50PM', 'W', 'Davenport Hall', '312'], 
+            ]
+        )
+
 
 if __name__ == '__main__':
     unittest.main()

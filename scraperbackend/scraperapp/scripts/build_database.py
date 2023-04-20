@@ -4,7 +4,8 @@ import json
 import time
 import requests
 from bs4 import BeautifulSoup
-from models import ClassInfo # doesnt work rn
+#from scrapperapp.models import ClassInfo #This doesn't work right now
+
 """Function that gets links for classes from Course Explorer"""
 def get_class_links():
     course_explorer = 'https://courses.illinois.edu'
