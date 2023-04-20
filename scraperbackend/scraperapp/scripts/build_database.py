@@ -4,7 +4,7 @@ import json
 import time
 import requests
 from bs4 import BeautifulSoup
-from scraperapp.models import ClassInfo
+from models import ClassInfo # doesnt work rn
 """Function that gets links for classes from Course Explorer"""
 def get_class_links():
     course_explorer = 'https://courses.illinois.edu'
@@ -121,3 +121,4 @@ def run():
                 input_into_SQLite_database(section)
     t1 = time.perf_counter()
     print(t1 - t0)
+"""
