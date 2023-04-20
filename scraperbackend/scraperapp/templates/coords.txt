@@ -1,34 +1,9 @@
 <map name="image-map">
-    <area target="" alt="DQ" title="DQ" href="" coords="68,50,2898,1854" shape="rect">
+    <area target="" alt="AUD" title="AUD" href="" coords="117,295,697,743" shape="rect">
 </map>
 <map name="image-map">
-    <area target="" alt="147" title="147" href="" coords="572,579,701,660" shape="rect">
-    <area target="" alt="141" title="141" href="" coords="573,350,700,429" shape="rect">
-    <area target="" alt="143" title="143" href="" coords="574,431,700,504" shape="rect">
-    <area target="" alt="173" title="173" href="" coords="220,755,291,852" shape="rect">
-    <area target="" alt="145" title="145" href="" coords="574,508,700,579" shape="rect">
-    <area target="" alt="159" title="159" href="" coords="487,754,559,854" shape="rect">
-    <area target="" alt="169" title="169" href="" coords="289,755,368,854" shape="rect">
-    <area target="" alt="165" title="165" href="" coords="367,753,442,849" shape="rect">
-    <area target="" alt="155" title="155" href="" coords="560,754,635,854" shape="rect">
-    <area target="" alt="150" title="150" href="" coords="638,714,701,856" shape="rect">
-    <area target="" alt="178" title="178" href="" coords="159,710,217,854" shape="rect">
+    <area target="" alt="AUD" title="AUD" href="" coords="146,307,644,705" shape="rect">
 </map>
 <map name="image-map">
-    <area target="" alt="243" title="243" href="" coords="608,437,745,517" shape="rect">
-    <area target="" alt="245" title="245" href="" coords="609,520,745,686" shape="rect">
-    <area target="" alt="241" title="241" href="" coords="610,354,744,435" shape="rect">
-</map>
-<map name="image-map">
-    <area target="" alt="341" title="341" href="" coords="665,368,816,462" shape="rect">
-    <area target="" alt="343" title="343" href="" coords="666,463,817,553" shape="rect">
-    <area target="" alt="345" title="345" href="" coords="666,555,821,645" shape="rect">
-    <area target="" alt="347" title="347" href="" coords="667,647,822,743" shape="rect">
-    <area target="" alt="314" title="314" href="" coords="323,406,620,701" shape="rect">
-</map>
-<map name="image-map">
-    <area target="" alt="441" title="441" href="" coords="229,106,519,283" shape="rect">
-    <area target="" alt="443" title="443" href="" coords="228,287,519,460" shape="rect">
-    <area target="" alt="445" title="445" href="" coords="225,464,516,629" shape="rect">
-    <area target="" alt="447" title="447" href="" coords="228,633,517,817" shape="rect">
+    <area target="" alt="AUD" title="AUD" href="" coords="117,168,715,729" shape="rect">
 </map>
