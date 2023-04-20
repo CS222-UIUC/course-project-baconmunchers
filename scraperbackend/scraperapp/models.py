@@ -8,7 +8,7 @@ class ClassInfo(models.Model):
     # Name = models.CharField(max_length=100)           
     # # Data Structures
     SubjectCode = models.CharField(max_length=10, blank=True)
-    CourseNumber = models.CharField(max_length=5, blank=True)
+    CourseNumber = models.CharField(max_length=3, blank=True)
     CRN = models.CharField(max_length=10, primary_key=True, blank=True)        
     # 31208
     # Type = models.CharField(max_length=20)           
