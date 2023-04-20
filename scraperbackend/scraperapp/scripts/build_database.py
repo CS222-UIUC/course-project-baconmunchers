@@ -4,7 +4,7 @@ import json
 import time
 import requests
 from bs4 import BeautifulSoup
-from scraperapp.models import ClassInfo
+from models import ClassInfo # doesnt work rn
 """Function that gets links for classes from Course Explorer"""
 def get_class_links():
     course_explorer = 'https://courses.illinois.edu'
@@ -68,10 +68,7 @@ def get_sections_from_class(link):
         days = [i.text.strip() for i in day_soup.find_all('div')]
         locations = [i.text for i in location_soup.find_all('div')]
         for time, day, location in zip(times, days, locations):
-            if time != 'ARRANGED' and 
-            			day != 'n.a.' and 
-            			location != 'n.a.' and 
-            			location != 'Location Pending':
+            if time != 'ARRANGED' and day != 'n.a.' and location != 'n.a.' and location != 'Location Pending':
                 start, end = time.split(' - ', 1)
                 if location == 'MAC GYM Campus Recreation Center East':
                     room, building = 'MAC GYM', 'Campus Recreation Center East'
@@ -124,3 +121,4 @@ def run():
                 input_into_SQLite_database(section)
     t1 = time.perf_counter()
     print(t1 - t0)
+"""
