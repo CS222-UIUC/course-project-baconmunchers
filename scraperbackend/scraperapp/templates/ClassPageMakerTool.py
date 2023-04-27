@@ -1,5 +1,3 @@
-import sys
-
 """
 In the file coords.txt, use copy and paste the result of https://www.image-map.net/. 
 Only use the shape rectangle(If you need more complex geometry, just use multiple rectangles). 
@@ -17,20 +15,19 @@ imgFileNames = [input('What is the file name? EG: "cifb.png": ') for _ in range(
 floorNames = [input('What should the floors be named? EG: "CIF Floor 1": ') for _ in range(numFloors)]
 
 hitboxes = [[] for _ in range(numFloors)]
-with open('coords.txt', 'r') as file: #use https://www.image-map.net/ ; put room number in title area
-  lines = file.readlines()
-  floor = 0
-  for line in lines:
-    if line == '<map name="image-map">\n':
-      continue
-    if line == '</map>\n' or line == '</map>':
-      floor += 1
-      continue
-    attributes = line.split()
-    roomNumber = attributes[3].split('"')[1]
-    coords = attributes[5]
-    hitboxes[floor].append((roomNumber, coords))
-    
+with open('coords.txt', 'r', encoding='utf-8') as file: #use https://www.image-map.net/ ; put room number in title area
+    lines = file.readlines()
+    floor = 0
+    for line in lines:
+        if line == '<map name="image-map">\n':
+            continue
+        if line == '</map>\n' or line == '</map>':
+            floor += 1
+            continue
+        attributes = line.split()
+        roomNumber = attributes[3].split('"')[1]
+        coords = attributes[5]
+        hitboxes[floor].append((roomNumber, coords))
 
 
 html = """{% load static %}
@@ -88,21 +85,21 @@ html = """{% load static %}
 """
 
 for floorName, imgFileName in zip(floorNames, imgFileNames):
-  floorID = imgFileName.split('.')[0]
-  html += f'      <option value="{floorID}">{floorName}</option>\n'
-html += '    </select>\n'  
+    floorID = imgFileName.split('.')[0]
+    html += f'      <option value="{floorID}">{floorName}</option>\n'
+html += '    </select>\n'
 
 for floorName, imgFileName, floor in zip(floorNames, imgFileNames, range(numFloors)):
-  floorID = imgFileName.split('.')[0]
-  div = f'    <div id="{floorID}" class="floor">\n'
-  div += '      <img src="{% static ' + "'" + f'floorplans/{imgFolder}/{imgFileName}' + "'%}" + f'" alt="{floorName}" usemap="#{floorID}map"/>\n'
-  #div += f'      <img src="{% static \'floorplans/{imgFolder}/{imgFileName}\' %}" alt="{floorName}" usemap="#{floorID}map"/>\n'
-  div += f'      <map name="{floorID}map">\n'
-  for roomNumber, coords in hitboxes[floor]:
-    div += f'          <area alt="{roomNumber}" title="{roomNumber}" {coords} shape="rect" onclick="fillOutRoom(' + "'" + f'{fileName}' + "', '" + f'{roomNumber}' + "'" + ');">\n'
-  div += f'      </map>\n    </div>\n'
+    floorID = imgFileName.split('.')[0]
+    div = f'    <div id="{floorID}" class="floor">\n'
+    div += '      <img src="{% static ' + "'" + f'floorplans/{imgFolder}/{imgFileName}' + "'%}" + f'" alt="{floorName}" usemap="#{floorID}map"/>\n'
+    #div += f'      <img src="{% static \'floorplans/{imgFolder}/{imgFileName}\' %}" alt="{floorName}" usemap="#{floorID}map"/>\n'
+    div += f'      <map name="{floorID}map">\n'
+    for roomNumber, coords in hitboxes[floor]:
+        div += f'          <area alt="{roomNumber}" title="{roomNumber}" {coords} shape="rect" onclick="fillOutRoom(\'{fileName}\', \'{roomNumber}\');">\n'
+    div += '      </map>\n    </div>\n'
 
-  html += div
+    html += div
 
 html += """    <script>
       function fillOutRoom(building, room) {
@@ -132,5 +129,5 @@ html += """    <script>
   </body>
 </html>"""
 
-with open(f'{fileName}.html', 'w') as file:
-  file.write(html)
+with open(f'{fileName}.html', 'w', encoding='utf-8') as file:
+    file.write(html)

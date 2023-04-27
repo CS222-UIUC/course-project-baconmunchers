@@ -6,11 +6,8 @@ class ClassInfoSerializer(serializers.ModelSerializer):
         model = ClassInfo
         fields = ('CRN', 'StartTime', 'EndTime', 'Days', 'Building', 'Room',)
 
-"""
-class ClassQuerySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ClassQuery
-        fields = ('id', 'CRN', 'StartTime', 'EndTime', 'Days', 'Building', 'Room',)
 
-
-"""
+# class ClassQuerySerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = ClassQuery
+#         fields = ('id', 'CRN', 'StartTime', 'EndTime', 'Days', 'Building', 'Room',)
