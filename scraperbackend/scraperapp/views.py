@@ -1,16 +1,45 @@
 from rest_framework import viewsets
-from rest_framework.response import Response
+# from rest_framework.response import Response
+
+from django.shortcuts import render, redirect
+from django.contrib import messages
+
 from .serializers import ClassInfoSerializer# , ClassQuerySerializer
 from .models import ClassInfo# , ClassQuery
-from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseRedirect
+# from django.http import HttpResponse, HttpResponseRedirect
 from .forms import ClassForm
 from .forms import BuildingForm
-from datetime import datetime
-from dal import autocomplete
-from dal_select2.views import Select2ListView
-from django.contrib import messages
-raw_buildings = ['', '1010 W Nevada', '1203 1/2 W Nevada', '1205 W Nevada', '1205 W Oregon', '1207 W Oregon', '1208 W Nevada', '614 E. Daniel', '901 W Oregon', '907 1/2 W Nevada', 'ACES Lib, Info & Alum Ctr', 'Activities & Recreation Center', 'Agricultural Engr Sciences Bld', 'Allen Residence Hall', 'Altgeld Hall', 'Animal Sciences Laboratory', 'Architecture Annex', 'Architecture Building', 'Armory', 'Art and Design Building', 'Astronomy Building', 'Beckman Institute', 'Bevier Hall', 'Burrill Hall', 'Business Instructional Fac', 'Campbell Hall', 'Campus Instructional Facility', 'Campus Recreation Center East', 'Ceramics Building', 'Ceramics Kiln House', 'Chemical and Life Sci Lab', 'Chemistry Annex', 'Chicago IL', 'Child Development Laboratory', 'Christopher Hall', 'Civil Eng Hydrosystems Lab', 'Dance Studio', 'Danville IL', 'Davenport Hall', 'David Kinley Hall', 'Digital Computer Laboratory', 'Discovery Partners Inst. CHI', 'Education Building', 'Electrical & Computer Eng Bldg', 'Engineering Hall', 'Engineering Sciences Building', 'English Building', 'Everitt Laboratory', 'Expanded Child Dev Lab', 'FAR Meeting Space', 'Flagg Hall', 'Foellinger Auditorium', 'Foreign Languages Building', 'Freer Hall', 'GYM Campus Recreation Center East', 'Grad Sch of Lib & Info Science', 'Grainger Engineering Library', 'Gregory Hall', 'Harding Band Building', 'Henry Administration Bldg', 'Huff Hall', 'Ice Arena', 'Illini Center', 'Illini Union', 'Illinois Street Residence Lng', 'Inst Labor &  Industrial Rel', 'Institute for Genomic Biology', 'Japan House', 'Krannert Art Museum', 'Krannert Center for Perf Arts', 'LAB Art-East Annex, Studio 2', 'Law Building', 'Library', 'Lincoln Hall', 'Loomis Laboratory', 'Materials Science & Eng Bld', 'Meat Science Laboratory', 'Mechanical Engineering Lab', 'Medical Sciences Building', 'Micro & Nanotechnology Lab', 'Mumford Hall', 'Music Building', 'National Soybean Res Ctr', 'Natural History Building', 'Newmark Civil Engineering Bldg', 'Noble Hall', 'Noyes Laboratory', 'Outdoor Space', 'Pennsylvania Lounge Bld - PAR', 'Plant Sciences Laboratory', 'Psychology Building', 'Richmond Studio', 'Roger Adams Laboratory', 'Seitz Materials Research Lab', 'Sidney Lu Mech Engr Bldg', 'Siebel Center for Comp Sci', 'Siebel Center for Design', 'Smith Memorial Hall', 'South Farms', 'Speech & Hearing Science Bldg', 'Spurlock Museum', 'Stock Pavilion', 'Student Dining & Res Program', 'Talbot Laboratory', 'Temple Hoyne Buell Hall', 'Transportation Building', 'Turner Hall', 'Vet Med Basic Sciences Bldg', 'Veterinary Teaching Hospital', 'Weston Hall', 'Wohlers Hall']
+# from datetime import datetime
+# from dal import autocomplete
+# from dal_select2.views import Select2ListView
+raw_buildings = ['', '1010 W Nevada', '1203 1/2 W Nevada', '1205 W Nevada', '1205 W Oregon', '1207 W Oregon',
+                 '1208 W Nevada', '614 E. Daniel', '901 W Oregon', '907 1/2 W Nevada', 'ACES Lib, Info & Alum Ctr', 
+                 'Activities & Recreation Center', 'Agricultural Engr Sciences Bld', 'Allen Residence Hall', 
+                 'Altgeld Hall', 'Animal Sciences Laboratory', 'Architecture Annex', 'Architecture Building', 'Armory', 
+                 'Art and Design Building', 'Astronomy Building', 'Beckman Institute', 'Bevier Hall', 'Burrill Hall', 
+                 'Business Instructional Fac', 'Campbell Hall', 'Campus Instructional Facility', 
+                 'Campus Recreation Center East', 'Ceramics Building', 'Ceramics Kiln House', 
+                 'Chemical and Life Sci Lab', 'Chemistry Annex', 'Chicago IL', 'Child Development Laboratory', 
+                 'Christopher Hall', 'Civil Eng Hydrosystems Lab', 'Dance Studio', 'Danville IL', 'Davenport Hall', 
+                 'David Kinley Hall', 'Digital Computer Laboratory', 'Discovery Partners Inst. CHI', 
+                 'Education Building', 'Electrical & Computer Eng Bldg', 'Engineering Hall', 
+                 'Engineering Sciences Building', 'English Building', 'Everitt Laboratory', 'Expanded Child Dev Lab', 
+                 'FAR Meeting Space', 'Flagg Hall', 'Foellinger Auditorium', 'Foreign Languages Building', 'Freer Hall', 
+                 'GYM Campus Recreation Center East', 'Grad Sch of Lib & Info Science', 'Grainger Engineering Library', 
+                 'Gregory Hall', 'Harding Band Building', 'Henry Administration Bldg', 'Huff Hall', 'Ice Arena', 
+                 'Illini Center', 'Illini Union', 'Illinois Street Residence Lng', 'Inst Labor &  Industrial Rel', 
+                 'Institute for Genomic Biology', 'Japan House', 'Krannert Art Museum', 'Krannert Center for Perf Arts', 
+                 'LAB Art-East Annex, Studio 2', 'Law Building', 'Library', 'Lincoln Hall', 'Loomis Laboratory', 
+                 'Materials Science & Eng Bld', 'Meat Science Laboratory', 'Mechanical Engineering Lab', 
+                 'Medical Sciences Building', 'Micro & Nanotechnology Lab', 'Mumford Hall', 'Music Building', 
+                 'National Soybean Res Ctr', 'Natural History Building', 'Newmark Civil Engineering Bldg', 'Noble Hall', 
+                 'Noyes Laboratory', 'Outdoor Space', 'Pennsylvania Lounge Bld - PAR', 'Plant Sciences Laboratory', 
+                 'Psychology Building', 'Richmond Studio', 'Roger Adams Laboratory', 'Seitz Materials Research Lab', 
+                 'Sidney Lu Mech Engr Bldg', 'Siebel Center for Comp Sci', 'Siebel Center for Design', 
+                 'Smith Memorial Hall', 'South Farms', 'Speech & Hearing Science Bldg', 'Spurlock Museum', 
+                 'Stock Pavilion', 'Student Dining & Res Program', 'Talbot Laboratory', 'Temple Hoyne Buell Hall', 
+                 'Transportation Building', 'Turner Hall', 'Vet Med Basic Sciences Bldg', 
+                 'Veterinary Teaching Hospital', 'Weston Hall', 'Wohlers Hall']
 BUILDINGS= [(building, building) for building in raw_buildings]
 
 
@@ -41,20 +70,20 @@ def get_class(request):
     CRN = form.cleaned_data['CRN']
     StartTime = form.cleaned_data['StartTime']
     EndTime = form.cleaned_data['EndTime']
-    Days = form.cleaned_data['Days'] 
-    Building = form.cleaned_data['Building'] 
+    Days = form.cleaned_data['Days']
+    Building = form.cleaned_data['Building']
     Room = form.cleaned_data['Room']
     info = ClassInfo.objects.all()
     # print(CRN, StartTime, EndTime, Days, Building, Room)
     if SubjectCode != "":
         info = info.filter(SubjectCode__icontains=SubjectCode)
-    if CourseNumber != None:
+    if CourseNumber is not None:
         info = info.filter(CourseNumber__icontains=str(CourseNumber))
-    if CRN != None:
+    if CRN is not None:
         info = info.filter(CRN__icontains=str(CRN))
         # could change the database parsing to store CRN as an integer
     #TODO Decide on logic for when a course should be filtered based on start and end time,
-    # Ex: if the start time entered is after the start time and before the end time of a class, should it be included 
+    # Ex: if the start time entered is after the start time and before the end time of a class, should it be included
     if StartTime != "":
         info = info.filter(StartTime__icontains=StartTime)
     if EndTime != "":
@@ -66,11 +95,11 @@ def get_class(request):
         info = info.filter(Building__icontains=Building)
     if Room != "":
         info = info.filter(Room__icontains=Room)
-    
+
     if not info:
         messages.error(request, 'No classes found. Are you sure you typed everything in correctly?')
         return render(request, 'get_class.html', {'form': form})
-    
+
     return render(request, 'classes.html', {'info': info})
 
 
@@ -84,20 +113,20 @@ def building_page(request):
         CRN = form.cleaned_data['CRN']
         StartTime = form.cleaned_data['StartTime']
         EndTime = form.cleaned_data['EndTime']
-        Days = form.cleaned_data['Days'] 
-        Building = form.cleaned_data['Building'] 
+        Days = form.cleaned_data['Days']
+        Building = form.cleaned_data['Building']
         Room = form.cleaned_data['Room']
         info = ClassInfo.objects.all()
         print(CRN, StartTime, EndTime, Days, Building, Room)
         if SubjectCode != "":
             info = info.filter(SubjectCode__icontains=SubjectCode)
-        if CourseNumber != None:
+        if CourseNumber is not None:
             info = info.filter(CourseNumber__icontains=str(CourseNumber))
-        if CRN != None:
+        if CRN is not None:
             info = info.filter(CRN__icontains=str(CRN))
             # could change the database parsing to store CRN as an integer
 #TODO Decide on logic for when a course should be filtered based on start and end time,
-# Ex: if the start time entered is after the start time and before the end time of a class, should it be included 
+# Ex: if the start time entered is after the start time and before the end time of a class, should it be included
         if StartTime != "":
             info = info.filter(StartTime__icontains=StartTime)
         if EndTime != "":
@@ -120,7 +149,7 @@ def main_map_page(request):
     print('form made')
     if form.is_valid():
         print('form valid')
-        Building = form.cleaned_data['Building'] 
+        Building = form.cleaned_data['Building']
         html = f'{Building}.html'
         try:
             return render(request, html, {'form': ClassForm()})

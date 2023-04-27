@@ -1,19 +1,19 @@
 """Django's builtin format for generating SQL tables using classes"""
 from django.db import models
 # Create your models here.
-"""Django model to represent classes, each field corresponds to an SQLite column"""
 class ClassInfo(models.Model):
-    # CourseNumber = models.CharField(max_length=10)   
+    """Django model to represent classes, each field corresponds to an SQLite column"""
+    # CourseNumber = models.CharField(max_length=10)
     # # CS 225
-    # Name = models.CharField(max_length=100)           
+    # Name = models.CharField(max_length=100)
     # # Data Structures
     SubjectCode = models.CharField(max_length=10, blank=True)
     CourseNumber = models.CharField(max_length=3, blank=True)
-    CRN = models.CharField(max_length=10, primary_key=True, blank=True)        
+    CRN = models.CharField(max_length=10, primary_key=True, blank=True)
     # 31208
-    # Type = models.CharField(max_length=20)           
+    # Type = models.CharField(max_length=20)
     # # Lecture
-    # Section = models.CharField(max_length=10)        
+    # Section = models.CharField(max_length=10)
     # # AL1
     StartTime = models.CharField(max_length=10, blank=True)
     # 11:00 AM

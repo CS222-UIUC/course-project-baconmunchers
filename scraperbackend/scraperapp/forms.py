@@ -120,7 +120,7 @@ BUILDINGS= [(building, building) for building in raw_buildings]
 
 class ClassForm(ModelForm): # pylint: disable=too-few-public-methods
     """Django form corresponding to the ClassInfo model"""   
-    #"""    
+    #"""
     class Meta: # pylint: disable=too-few-public-methods
         """Meta information about the fields derived from the ClassInfo model"""
         model = ClassInfo
@@ -180,7 +180,7 @@ class ClassForm(ModelForm): # pylint: disable=too-few-public-methods
 class BuildingForm(forms.Form): # pylint: disable=too-few-public-methods
     """Django form corresponding to specifically queries for buildings"""
     Building = forms.CharField(
-        label="Building", 
-        required=False, 
+        label="Building",
+        required=False,
         widget= forms.TextInput(attrs={'id':'id_Building', 'class': 'building'})
-        ) 
+        )
