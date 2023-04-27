@@ -6,11 +6,13 @@ import requests
 from bs4 import BeautifulSoup
 from scraperapp.models import ClassInfo #This doesn't work right now
 
-def get_class_links():
+course_explorer = 'https://courses.illinois.edu'
+year = '2023'
+season = 'spring'
+
+def get_class_links(): # pylint: disable=too-many-locals
     """Function that gets links for classes from Course Explorer"""
-    course_explorer = 'https://courses.illinois.edu'
-    year = '2023'
-    season = 'spring'
+    
     subjects_page_link = course_explorer + f'/schedule/{year}/{season}'
     subjects_page = requests.get(subjects_page_link, timeout=10)
 
@@ -43,7 +45,7 @@ def get_class_links():
             for link in links:
                 file.write(f"{link}\n")
 
-def get_sections_from_class(link):
+def get_sections_from_class(link): # pylint: disable=too-many-locals
     """Get non-online non-asynchronous sections of a class, given course explorer url.
     Data returned as list of sections.
     Each section is formatted as [crn, start, end, day, building, room].
@@ -62,7 +64,6 @@ def get_sections_from_class(link):
     for section_dict in json_data:
         crn = section_dict['crn']
 
-        # TODO: do this with regex for better efficiency?
         time_soup = BeautifulSoup(section_dict['time'], 'html.parser')
         day_soup = BeautifulSoup(section_dict['day'], 'html.parser')
         location_soup = BeautifulSoup(section_dict['location'], 'html.parser')
