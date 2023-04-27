@@ -9,15 +9,12 @@ from scraperapp.models import ClassInfo #This doesn't work right now
 def get_class_links():
     """Function that gets links for classes from Course Explorer"""
     course_explorer = 'https://courses.illinois.edu'
-    year = '2023'
-    season = 'spring'
-    subjects_page_link = course_explorer + f'/schedule/{year}/{season}'
-    subjects_page = requests.get(subjects_page_link, timeout=10)
+    subdir = '/schedule/2023/spring'
 
 	#Parse through the course subjects page for all subject page links
-    subjects_page_soup = BeautifulSoup(subjects_page.text, 'html.parser')
+    subjects_page_soup = BeautifulSoup(requests.get(course_explorer + subdir, timeout=10).text, 'html.parser')
     subjects_page_links = [str(i.get('href')) for i in subjects_page_soup.find_all('a')]
-    subject_links_regex = re.compile(f'/schedule/{year}/{season}/.*')
+    subject_links_regex = re.compile(f'{subdir}/.*')
     subject_links = [course_explorer + link for link in subjects_page_links
     						if not re.match(subject_links_regex, link) is None]
 
@@ -26,10 +23,9 @@ def get_class_links():
 
     for subject_page_link in subject_links:
         subject_code = re.split(r'/', subject_page_link)[-1]
-        subject_page = requests.get(subject_page_link, timeout=10)
-        subject_page_soup = BeautifulSoup(subject_page.text, 'html.parser')
+        subject_page_soup = BeautifulSoup(requests.get(subject_page_link, timeout=10).text, 'html.parser')
         subject_page_link = [str(i.get('href')) for i in subject_page_soup.find_all('a')]
-        class_links_regex = re.compile(fr'/schedule/{year}/{season}/.*/\d\d\d')
+        class_links_regex = re.compile(fr'{subdir}/.*/\d\d\d')
         class_links = [course_explorer + link for link in subject_page_link
 							if not re.match(class_links_regex, link) is None]
         classes[subject_code] = class_links
@@ -49,10 +45,9 @@ def get_sections_from_class(link):
     Each section is formatted as [crn, start, end, day, building, room].
     """
 
-    subject_code, course_number = link.split('/')[-2:]
-    class_page = requests.get(link, timeout=10)
-    class_page_soup = BeautifulSoup(class_page.text, 'html.parser')
-    data = class_page_soup.body.find('script', type='text/javascript').text.split('\n')[1][25:-1]
+    # subject_code, course_number = link.split('/')[-2:]
+    data = BeautifulSoup(requests.get(link, timeout=10).text, 'html.parser')\
+        .body.find('script', type='text/javascript').text.split('\n')[1][25:-1]
     try:
         json_data = json.loads(data)
     except:
@@ -60,24 +55,24 @@ def get_sections_from_class(link):
         return []
     sections = []
     for section_dict in json_data:
-        crn = section_dict['crn']
-
-        # TODO: do this with regex for better efficiency?
-        time_soup = BeautifulSoup(section_dict['time'], 'html.parser')
-        day_soup = BeautifulSoup(section_dict['day'], 'html.parser')
-        location_soup = BeautifulSoup(section_dict['location'], 'html.parser')
-        times = [i.text for i in time_soup.find_all('div')]
-        days = [i.text.strip() for i in day_soup.find_all('div')]
-        locations = [i.text for i in location_soup.find_all('div')]
+        # crn = section_dict['crn']
+        times = [i.text for i in BeautifulSoup(section_dict['time'], 'html.parser').find_all('div')]
+        days = [i.text.strip() for i in BeautifulSoup(section_dict['day'], 'html.parser').find_all('div')]
+        locations = [i.text for i in BeautifulSoup(section_dict['location'], 'html.parser').find_all('div')]
         for time, day, location in zip(times, days, locations):
             if time != 'ARRANGED' and day != 'n.a.' and location != 'n.a.' and location != 'Location Pending':
-                start, end = time.split(' - ', 1)
+                # start, end = time.split(' - ', 1)
                 if location == 'MAC GYM Campus Recreation Center East':
                     room, building = 'MAC GYM', 'Campus Recreation Center East'
-					# TODO: are there any more minor exceptions like this for when we re-generate the database
                 else:
                     room, building = location.split(' ', 1)
-                sections.append([subject_code, course_number, crn, start, end, day, building, room])
+                sections.append([
+                    *(link.split('/')[-2:]),
+                    section_dict['crn'],
+                    *(time.split(' - ', 1)),
+                    day,
+                    building,
+                    room])
     return sections
 
 def input_into_SQLite_database(section):

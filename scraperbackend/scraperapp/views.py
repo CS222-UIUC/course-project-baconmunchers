@@ -82,8 +82,7 @@ def get_class(request):
     if CRN is not None:
         info = info.filter(CRN__icontains=str(CRN))
         # could change the database parsing to store CRN as an integer
-    #TODO Decide on logic for when a course should be filtered based on start and end time,
-    # Ex: if the start time entered is after the start time and before the end time of a class, should it be included
+
     if StartTime != "":
         info = info.filter(StartTime__icontains=StartTime)
     if EndTime != "":
@@ -125,7 +124,7 @@ def building_page(request):
         if CRN is not None:
             info = info.filter(CRN__icontains=str(CRN))
             # could change the database parsing to store CRN as an integer
-#TODO Decide on logic for when a course should be filtered based on start and end time,
+
 # Ex: if the start time entered is after the start time and before the end time of a class, should it be included
         if StartTime != "":
             info = info.filter(StartTime__icontains=StartTime)
