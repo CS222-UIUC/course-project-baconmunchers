@@ -1,5 +1,5 @@
 import unittest
-from build_database import get_sections_from_class
+from build_database import get_sections_from_class # pylint: disable=import-error
 
 #WARNING: They still seem to be updating the course explorer. If a test case fails, make sure that it is not because the course explorer page has changed!
 

@@ -21,7 +21,7 @@ with open('coords.txt', 'r', encoding='utf-8') as file: #use https://www.image-m
     for line in lines:
         if line == '<map name="image-map">\n':
             continue
-        if line == '</map>\n' or line == '</map>':
+        if line in {'</map>\n', '</map>'}:
             floor += 1
             continue
         attributes = line.split()

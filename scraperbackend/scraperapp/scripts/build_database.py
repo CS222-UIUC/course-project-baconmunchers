@@ -4,7 +4,7 @@ import json
 # from time import perf_counter
 import requests
 from bs4 import BeautifulSoup
-from scraperapp.models import ClassInfo #This doesn't work right now
+#from scraperapp.models import ClassInfo #This doesn't work right now
 
 course_explorer = 'https://courses.illinois.edu'
 year = '2023'
@@ -12,7 +12,6 @@ season = 'spring'
 
 def get_class_links(): # pylint: disable=too-many-locals
     """Function that gets links for classes from Course Explorer"""
-    
     subjects_page_link = course_explorer + f'/schedule/{year}/{season}'
     subjects_page = requests.get(subjects_page_link, timeout=10)
 
