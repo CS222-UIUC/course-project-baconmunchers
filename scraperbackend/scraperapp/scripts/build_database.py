@@ -4,7 +4,7 @@ import json
 # from time import perf_counter
 import requests
 from bs4 import BeautifulSoup
-from scraperapp.models import ClassInfo #This doesn't work right now
+#from scraperapp.models import ClassInfo #This doesn't work right now
 
 def get_class_links():
     """Function that gets links for classes from Course Explorer"""
@@ -39,7 +39,7 @@ def get_class_links():
             for link in links:
                 file.write(f"{link}\n")
 
-def get_sections_from_class(link):
+def get_sections_from_class(link): # pylint: disable=too-many-locals
     """Get non-online non-asynchronous sections of a class, given course explorer url.
     Data returned as list of sections.
     Each section is formatted as [crn, start, end, day, building, room].
