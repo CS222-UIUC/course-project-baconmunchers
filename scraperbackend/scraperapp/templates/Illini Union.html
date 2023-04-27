@@ -1,36 +1,4 @@
-"""
-In the file coords.txt, use copy and paste the result of https://www.image-map.net/. 
-Only use the shape rectangle(If you need more complex geometry, just use multiple rectangles). 
-In the title area, put the room number. Make sure it matches whats in the database(ie if the database has '35' in it but the diagram has '035', use '35')
-Leave everything else blank. Then copy and past starting from <map nam...> to </map>.  
-Paste them in the order of the floors with no newlines between them.
-"""
-
-#sys.stdin = open('in.txt', 'r') #Can be used if you don't want to type everything out each time.
-
-fileName = input('Building Name(Use the same exact name as in the database): ') #Put in the exact string in the database
-numFloors = int(input('Number of Floors: '))
-imgFolder = input('What folder are the floor plans in?: ')
-imgFileNames = [input('What is the file name? EG: "cifb.png": ') for _ in range(numFloors)] #Please put them in order(top to bottom)
-floorNames = [input('What should the floors be named? EG: "CIF Floor 1": ') for _ in range(numFloors)]
-
-hitboxes = [[] for _ in range(numFloors)]
-with open('coords.txt', 'r', encoding='utf-8') as file: #use https://www.image-map.net/ ; put room number in title area
-    lines = file.readlines()
-    floor = 0
-    for line in lines:
-        if line == '<map name="image-map">\n':
-            continue
-        if line in ('</map>\n', '</map>'):
-            floor += 1
-            continue
-        attributes = line.split()
-        roomNumber = attributes[3].split('"')[1]
-        coords = attributes[5]
-        hitboxes[floor].append((roomNumber, coords))
-
-
-html = """{% load static %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
@@ -48,7 +16,7 @@ html = """{% load static %}
   <body>
   
     <nav class="navbar navbar-light" style="background-color: #e84a27;">
-  """ + f'<span class="navbar-brand mb-0 h1">&ensp;{fileName}</span>' + """
+  <span class="navbar-brand mb-0 h1">&ensp;Illini Union</span>
       <a class="nav-link mb=0" href="/get_class/">Advanced Search&emsp;</a>
     </nav>
 
@@ -70,26 +38,40 @@ html = """{% load static %}
       </script>
     <select id="floorselection">
       <option value="">Select Floor</option>
-"""
-
-for floorName, imgFileName in zip(floorNames, imgFileNames):
-    floorID = imgFileName.split('.')[0]
-    html += f'      <option value="{floorID}">{floorName}</option>\n'
-html += '    </select>\n'
-
-for floorName, imgFileName, floor in zip(floorNames, imgFileNames, range(numFloors)):
-    floorID = imgFileName.split('.')[0]
-    div = f'    <div id="{floorID}" class="floor">\n'
-    div += '      <img src="{% static ' + "'" + f'floorplans/{imgFolder}/{imgFileName}' + "'%}" + f'" alt="{floorName}" usemap="#{floorID}map"/>\n'
-    #div += f'      <img src="{% static \'floorplans/{imgFolder}/{imgFileName}\' %}" alt="{floorName}" usemap="#{floorID}map"/>\n'
-    div += f'      <map name="{floorID}map">\n'
-    for roomNumber, coords in hitboxes[floor]:
-        div += f'          <area alt="{roomNumber}" title="{roomNumber}" {coords} shape="rect" onclick="fillOutRoom(\'{fileName}\', \'{roomNumber}\');">\n'
-    div += '      </map>\n    </div>\n'
-
-    html += div
-
-html += """    <script>
+      <option value="unionb">Union Basement</option>
+      <option value="union1">Union Floor 1</option>
+      <option value="union2">Union Floor 2</option>
+      <option value="union3">Union Floor 3</option>
+      <option value="union4">Union Floor 4</option>
+    </select>
+    <div id="unionb" class="floor">
+      <img src="{% static 'floorplans/union/unionb.png'%}" alt="Union Basement" usemap="#unionbmap"/>
+      <map name="unionbmap">
+          <area alt="60" title="60" coords="382,997,913,1470" shape="rect" onclick="fillOutRoom('Illini Union', '60');">
+          <area alt="60" title="60" coords="910,1397,998,1467" shape="rect" onclick="fillOutRoom('Illini Union', '60');">
+      </map>
+    </div>
+    <div id="union1" class="floor">
+      <img src="{% static 'floorplans/union/union1.png'%}" alt="Union Floor 1" usemap="#union1map"/>
+      <map name="union1map">
+      </map>
+    </div>
+    <div id="union2" class="floor">
+      <img src="{% static 'floorplans/union/union2.png'%}" alt="Union Floor 2" usemap="#union2map"/>
+      <map name="union2map">
+      </map>
+    </div>
+    <div id="union3" class="floor">
+      <img src="{% static 'floorplans/union/union3.png'%}" alt="Union Floor 3" usemap="#union3map"/>
+      <map name="union3map">
+      </map>
+    </div>
+    <div id="union4" class="floor">
+      <img src="{% static 'floorplans/union/union4.png'%}" alt="Union Floor 4" usemap="#union4map"/>
+      <map name="union4map">
+      </map>
+    </div>
+    <script>
       function fillOutRoom(building, room) {
         document.getElementById('id_Building').value = building;
         document.getElementById('id_Room').value = room;
@@ -115,7 +97,4 @@ html += """    <script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   </body>
-</html>"""
-
-with open(f'{fileName}.html', 'w', encoding='utf-8') as file:
-    file.write(html)
+</html>

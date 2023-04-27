@@ -1,36 +1,4 @@
-"""
-In the file coords.txt, use copy and paste the result of https://www.image-map.net/. 
-Only use the shape rectangle(If you need more complex geometry, just use multiple rectangles). 
-In the title area, put the room number. Make sure it matches whats in the database(ie if the database has '35' in it but the diagram has '035', use '35')
-Leave everything else blank. Then copy and past starting from <map nam...> to </map>.  
-Paste them in the order of the floors with no newlines between them.
-"""
-
-#sys.stdin = open('in.txt', 'r') #Can be used if you don't want to type everything out each time.
-
-fileName = input('Building Name(Use the same exact name as in the database): ') #Put in the exact string in the database
-numFloors = int(input('Number of Floors: '))
-imgFolder = input('What folder are the floor plans in?: ')
-imgFileNames = [input('What is the file name? EG: "cifb.png": ') for _ in range(numFloors)] #Please put them in order(top to bottom)
-floorNames = [input('What should the floors be named? EG: "CIF Floor 1": ') for _ in range(numFloors)]
-
-hitboxes = [[] for _ in range(numFloors)]
-with open('coords.txt', 'r', encoding='utf-8') as file: #use https://www.image-map.net/ ; put room number in title area
-    lines = file.readlines()
-    floor = 0
-    for line in lines:
-        if line == '<map name="image-map">\n':
-            continue
-        if line in ('</map>\n', '</map>'):
-            floor += 1
-            continue
-        attributes = line.split()
-        roomNumber = attributes[3].split('"')[1]
-        coords = attributes[5]
-        hitboxes[floor].append((roomNumber, coords))
-
-
-html = """{% load static %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
@@ -48,7 +16,7 @@ html = """{% load static %}
   <body>
   
     <nav class="navbar navbar-light" style="background-color: #e84a27;">
-  """ + f'<span class="navbar-brand mb-0 h1">&ensp;{fileName}</span>' + """
+  <span class="navbar-brand mb-0 h1">&ensp;Natural History Building</span>
       <a class="nav-link mb=0" href="/get_class/">Advanced Search&emsp;</a>
     </nav>
 
@@ -70,26 +38,54 @@ html = """{% load static %}
       </script>
     <select id="floorselection">
       <option value="">Select Floor</option>
-"""
-
-for floorName, imgFileName in zip(floorNames, imgFileNames):
-    floorID = imgFileName.split('.')[0]
-    html += f'      <option value="{floorID}">{floorName}</option>\n'
-html += '    </select>\n'
-
-for floorName, imgFileName, floor in zip(floorNames, imgFileNames, range(numFloors)):
-    floorID = imgFileName.split('.')[0]
-    div = f'    <div id="{floorID}" class="floor">\n'
-    div += '      <img src="{% static ' + "'" + f'floorplans/{imgFolder}/{imgFileName}' + "'%}" + f'" alt="{floorName}" usemap="#{floorID}map"/>\n'
-    #div += f'      <img src="{% static \'floorplans/{imgFolder}/{imgFileName}\' %}" alt="{floorName}" usemap="#{floorID}map"/>\n'
-    div += f'      <map name="{floorID}map">\n'
-    for roomNumber, coords in hitboxes[floor]:
-        div += f'          <area alt="{roomNumber}" title="{roomNumber}" {coords} shape="rect" onclick="fillOutRoom(\'{fileName}\', \'{roomNumber}\');">\n'
-    div += '      </map>\n    </div>\n'
-
-    html += div
-
-html += """    <script>
+      <option value="naturalHistory1">Natural History Building Floor 1</option>
+      <option value="naturalHistory2">Natural History Building Floor 2</option>
+      <option value="naturalHistory3">Natural History Building Floor 3</option>
+      <option value="naturalHistory4">Natural History Building Floor 4</option>
+    </select>
+    <div id="naturalHistory1" class="floor">
+      <img src="{% static 'floorplans/naturalHistory/naturalHistory1.PNG'%}" alt="Natural History Building Floor 1" usemap="#naturalHistory1map"/>
+      <map name="naturalHistory1map">
+          <area alt="1071" title="1071" coords="139,399,325,472" shape="rect" onclick="fillOutRoom('Natural History Building', '1071');">
+          <area alt="1020" title="1020" coords="356,329,451,453" shape="rect" onclick="fillOutRoom('Natural History Building', '1020');">
+          <area alt="1022" title="1022" coords="451,581,359,454" shape="rect" onclick="fillOutRoom('Natural History Building', '1022');">
+      </map>
+    </div>
+    <div id="naturalHistory2" class="floor">
+      <img src="{% static 'floorplans/naturalHistory/naturalHistory2.PNG'%}" alt="Natural History Building Floor 2" usemap="#naturalHistory2map"/>
+      <map name="naturalHistory2map">
+          <area alt="2078" title="2078" coords="30,490,115,596" shape="rect" onclick="fillOutRoom('Natural History Building', '2078');">
+          <area alt="2079" title="2079" coords="197,407,348,592" shape="rect" onclick="fillOutRoom('Natural History Building', '2079');">
+          <area alt="2020" title="2020" coords="382,333,475,595" shape="rect" onclick="fillOutRoom('Natural History Building', '2020');">
+          <area alt="2084" title="2084" coords="50,230,124,329" shape="rect" onclick="fillOutRoom('Natural History Building', '2084');">
+          <area alt="2049" title="2049" coords="174,691,275,770" shape="rect" onclick="fillOutRoom('Natural History Building', '2049');">
+          <area alt="2082" title="2082" coords="117,57,227,161" shape="rect" onclick="fillOutRoom('Natural History Building', '2082');">
+          <area alt="2083" title="2083" coords="198,300,311,405" shape="rect" onclick="fillOutRoom('Natural History Building', '2083');">
+          <area alt="2090" title="2090" coords="50,47,117,161" shape="rect" onclick="fillOutRoom('Natural History Building', '2090');">
+      </map>
+    </div>
+    <div id="naturalHistory3" class="floor">
+      <img src="{% static 'floorplans/naturalHistory/naturalHistory3.PNG'%}" alt="Natural History Building Floor 3" usemap="#naturalHistory3map"/>
+      <map name="naturalHistory3map">
+          <area alt="3098" title="3098" coords="59,14,158,145" shape="rect" onclick="fillOutRoom('Natural History Building', '3098');">
+          <area alt="3100" title="3100" coords="158,23,263,145" shape="rect" onclick="fillOutRoom('Natural History Building', '3100');">
+          <area alt="3002" title="3002" coords="428,143,323,20" shape="rect" onclick="fillOutRoom('Natural History Building', '3002');">
+          <area alt="3004" title="3004" coords="430,144,527,13" shape="rect" onclick="fillOutRoom('Natural History Building', '3004');">
+          <area alt="3011" title="3011" coords="236,306,409,425" shape="rect" onclick="fillOutRoom('Natural History Building', '3011');">
+      </map>
+    </div>
+    <div id="naturalHistory4" class="floor">
+      <img src="{% static 'floorplans/naturalHistory/naturalHistory4.PNG'%}" alt="Natural History Building Floor 4" usemap="#naturalHistory4map"/>
+      <map name="naturalHistory4map">
+          <area alt="4004" title="4004" coords="443,25,520,149" shape="rect" onclick="fillOutRoom('Natural History Building', '4004');">
+          <area alt="4014" title="4014" coords="440,436,543,542" shape="rect" onclick="fillOutRoom('Natural History Building', '4014');">
+          <area alt="4016" title="4016" coords="440,544,543,648" shape="rect" onclick="fillOutRoom('Natural History Building', '4016');">
+          <area alt="4072" title="4072" coords="57,15,157,150" shape="rect" onclick="fillOutRoom('Natural History Building', '4072');">
+          <area alt="4074" title="4074" coords="157,31,259,152" shape="rect" onclick="fillOutRoom('Natural History Building', '4074');">
+          <area alt="4002" title="4002" coords="323,31,443,149" shape="rect" onclick="fillOutRoom('Natural History Building', '4002');">
+      </map>
+    </div>
+    <script>
       function fillOutRoom(building, room) {
         document.getElementById('id_Building').value = building;
         document.getElementById('id_Room').value = room;
@@ -115,7 +111,4 @@ html += """    <script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   </body>
-</html>"""
-
-with open(f'{fileName}.html', 'w', encoding='utf-8') as file:
-    file.write(html)
+</html>
