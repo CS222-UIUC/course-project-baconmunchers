@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Get Class</title>
+    <style>
+      img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+      }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  </head>
+  <body>
+  
+    <nav class="navbar navbar-light" style="background-color: #e84a27;">
+  <span class="navbar-brand mb-0 h1">&ensp;English Building</span>
+      <a class="nav-link mb=0" href="/get_class/">Advanced Search&emsp;</a>
+    </nav>
+
+    <!-- <img src="{% static 'floorplans/masterMapMedium.png' %}" alt="masterMap"> -->
+    <form action="/get_building/" method="post" id="class_info_form" hidden>
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+    <script>    
+      $( "#id_SubjectCode" ).autocomplete({
+        source: ['AAS', 'ABE', 'ACCY', 'ACE', 'ACES', 'ADV', 'AE', 'AFAS', 'AFRO', 'AFST', 'AGCM', 'AGED', 'AHS', 'AIS', 'ANSC', 'ANTH', 'ARAB', 'ARCH', 'ART', 'ARTD', 'ARTE', 'ARTF', 'ARTH', 'ARTJ', 'ARTS', 'ASRM', 'ASTR', 'ATMS', 'BADM', 'BASQ', 'BCOG', 'BCS', 'BDI', 'BIOC', 'BIOE', 'BSE', 'BTW', 'BUS', 'CB', 'CDB', 'CEE', 'CHBE', 'CHEM', 'CHIN', 'CHLH', 'CHP', 'CI', 'CLCV', 'CMN', 'CPSC', 'CS', 'CSE', 'CW', 'CWL', 'CZCH', 'DANC', 'EALC', 'ECE', 'ECON', 'EDPR', 'EDUC', 'EIL', 'ENG', 'ENGL', 'ENVS', 'EPOL', 'EPS', 'EPSY', 'ERAM', 'ESE', 'ESL', 'ETMA', 'EURO', 'FAA', 'FIN', 'FLTE', 'FR', 'FSHN', 'GC', 'GEOL', 'GER', 'GGIS', 'GLBL', 'GRK', 'GRKM', 'GS', 'GSD', 'GWS', 'HDFS', 'HEBR', 'HIST', 'HNDI', 'HORT', 'HT', 'HUM', 'IB', 'IE', 'IHLT', 'INFO', 'IS', 'ITAL', 'JAPN', 'JOUR', 'JS', 'KIN', 'KOR', 'LA', 'LAS', 'LAST', 'LAT', 'LAW', 'LEAD', 'LER', 'LING', 'LLS', 'MACS', 'MATH', 'MCB', 'MDIA', 'MDVL', 'ME', 'MICR', 'MILS', 'MIP', 'MSE', 'MUS', 'MUSC', 'MUSE', 'NE', 'NEUR', 'NPRE', 'NRES', 'NS', 'NUTR', 'PATH', 'PERS', 'PHIL', 'PHYS', 'PLPA', 'POL', 'PORT', 'PS', 'PSM', 'PSYC', 'QUEC', 'REES', 'REHB', 'REL', 'RHET', 'RST', 'RUSS', 'SAME', 'SCAN', 'SE', 'SHS', 'SLAV', 'SOC', 'SOCW', 'SPAN', 'SPED', 'STAT', 'SWAH', 'TAM', 'TE', 'THEA', 'TMGT', 'TRST', 'TURK', 'UKR', 'UP', 'VCM', 'VM', 'WGGP', 'WRIT']
+      });
+      </script>
+    <script>    
+      $( "#id_Building" ).autocomplete({
+        source: ['1010 W Nevada', '1203 1/2 W Nevada', '1205 W Nevada', '1205 W Oregon', '1207 W Oregon', '1208 W Nevada', '614 E. Daniel', '901 W Oregon', '907 1/2 W Nevada', 'ACES Lib, Info & Alum Ctr', 'Activities & Recreation Center', 'Agricultural Engr Sciences Bld', 'Allen Residence Hall', 'Altgeld Hall', 'Animal Sciences Laboratory', 'Architecture Annex', 'Architecture Building', 'Armory', 'Art and Design Building', 'Astronomy Building', 'Beckman Institute', 'Bevier Hall', 'Burrill Hall', 'Business Instructional Fac', 'Campbell Hall', 'Campus Instructional Facility', 'Campus Recreation Center East', 'Ceramics Building', 'Ceramics Kiln House', 'Chemical and Life Sci Lab', 'Chemistry Annex', 'Chicago IL', 'Child Development Laboratory', 'Christopher Hall', 'Civil Eng Hydrosystems Lab', 'Dance Studio', 'Danville IL', 'Davenport Hall', 'David Kinley Hall', 'Digital Computer Laboratory', 'Discovery Partners Inst. CHI', 'Education Building', 'Electrical & Computer Eng Bldg', 'Engineering Hall', 'Engineering Sciences Building', 'English Building', 'Everitt Laboratory', 'Expanded Child Dev Lab', 'FAR Meeting Space', 'Flagg Hall', 'Foellinger Auditorium', 'Foreign Languages Building', 'Freer Hall', 'GYM Campus Recreation Center East', 'Grad Sch of Lib & Info Science', 'Grainger Engineering Library', 'Gregory Hall', 'Harding Band Building', 'Henry Administration Bldg', 'Huff Hall', 'Ice Arena', 'Illini Center', 'Illini Union', 'Illinois Street Residence Lng', 'Inst Labor &  Industrial Rel', 'Institute for Genomic Biology', 'Japan House', 'Krannert Art Museum', 'Krannert Center for Perf Arts', 'LAB Art-East Annex, Studio 2', 'Law Building', 'Library', 'Lincoln Hall', 'Loomis Laboratory', 'Materials Science & Eng Bld', 'Meat Science Laboratory', 'Mechanical Engineering Lab', 'Medical Sciences Building', 'Micro & Nanotechnology Lab', 'Mumford Hall', 'Music Building', 'National Soybean Res Ctr', 'Natural History Building', 'Newmark Civil Engineering Bldg', 'Noble Hall', 'Noyes Laboratory', 'Outdoor Space', 'Pennsylvania Lounge Bld - PAR', 'Plant Sciences Laboratory', 'Psychology Building', 'Richmond Studio', 'Roger Adams Laboratory', 'Seitz Materials Research Lab', 'Sidney Lu Mech Engr Bldg', 'Siebel Center for Comp Sci', 'Siebel Center for Design', 'Smith Memorial Hall', 'South Farms', 'Speech & Hearing Science Bldg', 'Spurlock Museum', 'Stock Pavilion', 'Student Dining & Res Program', 'Talbot Laboratory', 'Temple Hoyne Buell Hall', 'Transportation Building', 'Turner Hall', 'Vet Med Basic Sciences Bldg', 'Veterinary Teaching Hospital', 'Weston Hall', 'Wohlers Hall']
+      });
+      </script>
+    <select id="floorselection">
+      <option value="">Select Floor</option>
+      <option value="englishb">English Basement</option>
+      <option value="english1">English Floor 1</option>
+      <option value="english2">English Floor 2</option>
+      <option value="english3">English Floor 3</option>
+      <option value="english4">English Floor 4</option>
+    </select>
+    <div id="englishb" class="floor">
+      <img src="{% static 'floorplans/english/englishb.PNG'%}" alt="English Basement" usemap="#englishbmap"/>
+      <map name="englishbmap">
+          <area alt="36" title="36" coords="40,500,126,569" shape="rect" onclick="fillOutRoom('English Building', '36');">
+          <area alt="25" title="25" coords="233,464,299,590" shape="rect" onclick="fillOutRoom('English Building', '25');">
+          <area alt="44" title="44" coords="38,239,125,297" shape="rect" onclick="fillOutRoom('English Building', '44');">
+          <area alt="61" title="61" coords="162,238,217,376" shape="rect" onclick="fillOutRoom('English Building', '61');">
+          <area alt="69" title="69" coords="359,218,460,331" shape="rect" onclick="fillOutRoom('English Building', '69');">
+      </map>
+    </div>
+    <div id="english1" class="floor">
+      <img src="{% static 'floorplans/english/english1.PNG'%}" alt="English Floor 1" usemap="#english1map"/>
+      <map name="english1map">
+          <area alt="104" title="104" coords="547,614,606,750" shape="rect" onclick="fillOutRoom('English Building', '104');">
+          <area alt="108" title="108" coords="413,620,478,741" shape="rect" onclick="fillOutRoom('English Building', '108');">
+          <area alt="150" title="150" coords="67,222,161,330" shape="rect" onclick="fillOutRoom('English Building', '150');">
+          <area alt="156" title="156" coords="221,36,288,117" shape="rect" onclick="fillOutRoom('English Building', '156');">
+          <area alt="160" title="160" coords="413,34,567,158" shape="rect" onclick="fillOutRoom('English Building', '160');">
+          <area alt="105" title="105" coords="660,23,707,93" shape="rect" onclick="fillOutRoom('English Building', '105');">
+          <area alt="145" title="145" coords="187,221,247,338" shape="rect" onclick="fillOutRoom('English Building', '145');">
+          <area alt="125" title="125" coords="256,214,352,284" shape="rect" onclick="fillOutRoom('English Building', '125');">
+          <area alt="123" title="123" coords="383,213,496,285" shape="rect" onclick="fillOutRoom('English Building', '123');">
+          <area alt="127" title="127" coords="257,284,325,375" shape="rect" onclick="fillOutRoom('English Building', '127');">
+          <area alt="131" title="131" coords="251,376,324,484" shape="rect" onclick="fillOutRoom('English Building', '131');">
+          <area alt="135" title="135" coords="254,488,353,559" shape="rect" onclick="fillOutRoom('English Building', '135');">
+          <area alt="119" title="119" coords="413,286,495,376" shape="rect" onclick="fillOutRoom('English Building', '119');">
+          <area alt="115" title="115" coords="412,377,493,487" shape="rect" onclick="fillOutRoom('English Building', '115');">
+          <area alt="113" title="113" coords="384,489,493,557" shape="rect" onclick="fillOutRoom('English Building', '113');">
+      </map>
+    </div>
+    <div id="english2" class="floor">
+      <img src="{% static 'floorplans/english/english2.PNG'%}" alt="English Floor 2" usemap="#english2map"/>
+      <map name="english2map">
+          <area alt="259" title="259" coords="92,47,191,176" shape="rect" onclick="fillOutRoom('English Building', '259');">
+      </map>
+    </div>
+    <div id="english3" class="floor">
+      <img src="{% static 'floorplans/english/english3.PNG'%}" alt="English Floor 3" usemap="#english3map"/>
+      <map name="english3map">
+          <area alt="304" title="304" coords="570,694,744,831" shape="rect" onclick="fillOutRoom('English Building', '304');">
+          <area alt="303" title="303" coords="616,446,720,541" shape="rect" onclick="fillOutRoom('English Building', '303');">
+          <area alt="309" title="309" coords="518,356,581,442" shape="rect" onclick="fillOutRoom('English Building', '309');">
+          <area alt="307" title="307" coords="518,446,580,496" shape="rect" onclick="fillOutRoom('English Building', '307');">
+      </map>
+    </div>
+    <div id="english4" class="floor">
+      <img src="{% static 'floorplans/english/english4.PNG'%}" alt="English Floor 4" usemap="#english4map"/>
+      <map name="english4map">
+      </map>
+    </div>
+    <script>
+      function fillOutRoom(building, room) {
+        document.getElementById('id_Building').value = building;
+        document.getElementById('id_Room').value = room;
+        document.forms[0].submit();
+      }
+    </script>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src= "{% static 'imageMapResizer.min.js' %}"></script>
+    <script type="text/javascript">
+      imageMapResize();
+    </script>
+    <script>
+      // https://codeamend.com/blog/show-hide-div-based-on-dropdown-selected-using-jquery/#:~:text=If%20you%20want%20to%20hide,of%20the%20selected%20dropdown%20option.
+      $(document).ready(function() {
+          $('#floorselection').bind('change', function() {
+            $(".floor").hide();
+            $("#" + $(this).val()).show();
+          });
+          $('#floorselection').trigger('change');
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  </body>
+</html>

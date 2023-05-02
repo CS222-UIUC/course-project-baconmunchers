@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Get Class</title>
+    <style>
+      img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+      }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  </head>
+  <body>
+  
+    <nav class="navbar navbar-light" style="background-color: #e84a27;">
+  <span class="navbar-brand mb-0 h1">&ensp;Foreign Languages Building</span>
+      <a class="nav-link mb=0" href="/get_class/">Advanced Search&emsp;</a>
+    </nav>
+
+    <!-- <img src="{% static 'floorplans/masterMapMedium.png' %}" alt="masterMap"> -->
+    <form action="/get_building/" method="post" id="class_info_form" hidden>
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+    <script>    
+      $( "#id_SubjectCode" ).autocomplete({
+        source: ['AAS', 'ABE', 'ACCY', 'ACE', 'ACES', 'ADV', 'AE', 'AFAS', 'AFRO', 'AFST', 'AGCM', 'AGED', 'AHS', 'AIS', 'ANSC', 'ANTH', 'ARAB', 'ARCH', 'ART', 'ARTD', 'ARTE', 'ARTF', 'ARTH', 'ARTJ', 'ARTS', 'ASRM', 'ASTR', 'ATMS', 'BADM', 'BASQ', 'BCOG', 'BCS', 'BDI', 'BIOC', 'BIOE', 'BSE', 'BTW', 'BUS', 'CB', 'CDB', 'CEE', 'CHBE', 'CHEM', 'CHIN', 'CHLH', 'CHP', 'CI', 'CLCV', 'CMN', 'CPSC', 'CS', 'CSE', 'CW', 'CWL', 'CZCH', 'DANC', 'EALC', 'ECE', 'ECON', 'EDPR', 'EDUC', 'EIL', 'ENG', 'ENGL', 'ENVS', 'EPOL', 'EPS', 'EPSY', 'ERAM', 'ESE', 'ESL', 'ETMA', 'EURO', 'FAA', 'FIN', 'FLTE', 'FR', 'FSHN', 'GC', 'GEOL', 'GER', 'GGIS', 'GLBL', 'GRK', 'GRKM', 'GS', 'GSD', 'GWS', 'HDFS', 'HEBR', 'HIST', 'HNDI', 'HORT', 'HT', 'HUM', 'IB', 'IE', 'IHLT', 'INFO', 'IS', 'ITAL', 'JAPN', 'JOUR', 'JS', 'KIN', 'KOR', 'LA', 'LAS', 'LAST', 'LAT', 'LAW', 'LEAD', 'LER', 'LING', 'LLS', 'MACS', 'MATH', 'MCB', 'MDIA', 'MDVL', 'ME', 'MICR', 'MILS', 'MIP', 'MSE', 'MUS', 'MUSC', 'MUSE', 'NE', 'NEUR', 'NPRE', 'NRES', 'NS', 'NUTR', 'PATH', 'PERS', 'PHIL', 'PHYS', 'PLPA', 'POL', 'PORT', 'PS', 'PSM', 'PSYC', 'QUEC', 'REES', 'REHB', 'REL', 'RHET', 'RST', 'RUSS', 'SAME', 'SCAN', 'SE', 'SHS', 'SLAV', 'SOC', 'SOCW', 'SPAN', 'SPED', 'STAT', 'SWAH', 'TAM', 'TE', 'THEA', 'TMGT', 'TRST', 'TURK', 'UKR', 'UP', 'VCM', 'VM', 'WGGP', 'WRIT']
+      });
+      </script>
+    <script>    
+      $( "#id_Building" ).autocomplete({
+        source: ['1010 W Nevada', '1203 1/2 W Nevada', '1205 W Nevada', '1205 W Oregon', '1207 W Oregon', '1208 W Nevada', '614 E. Daniel', '901 W Oregon', '907 1/2 W Nevada', 'ACES Lib, Info & Alum Ctr', 'Activities & Recreation Center', 'Agricultural Engr Sciences Bld', 'Allen Residence Hall', 'Altgeld Hall', 'Animal Sciences Laboratory', 'Architecture Annex', 'Architecture Building', 'Armory', 'Art and Design Building', 'Astronomy Building', 'Beckman Institute', 'Bevier Hall', 'Burrill Hall', 'Business Instructional Fac', 'Campbell Hall', 'Campus Instructional Facility', 'Campus Recreation Center East', 'Ceramics Building', 'Ceramics Kiln House', 'Chemical and Life Sci Lab', 'Chemistry Annex', 'Chicago IL', 'Child Development Laboratory', 'Christopher Hall', 'Civil Eng Hydrosystems Lab', 'Dance Studio', 'Danville IL', 'Davenport Hall', 'David Kinley Hall', 'Digital Computer Laboratory', 'Discovery Partners Inst. CHI', 'Education Building', 'Electrical & Computer Eng Bldg', 'Engineering Hall', 'Engineering Sciences Building', 'English Building', 'Everitt Laboratory', 'Expanded Child Dev Lab', 'FAR Meeting Space', 'Flagg Hall', 'Foellinger Auditorium', 'Foreign Languages Building', 'Freer Hall', 'GYM Campus Recreation Center East', 'Grad Sch of Lib & Info Science', 'Grainger Engineering Library', 'Gregory Hall', 'Harding Band Building', 'Henry Administration Bldg', 'Huff Hall', 'Ice Arena', 'Illini Center', 'Illini Union', 'Illinois Street Residence Lng', 'Inst Labor &  Industrial Rel', 'Institute for Genomic Biology', 'Japan House', 'Krannert Art Museum', 'Krannert Center for Perf Arts', 'LAB Art-East Annex, Studio 2', 'Law Building', 'Library', 'Lincoln Hall', 'Loomis Laboratory', 'Materials Science & Eng Bld', 'Meat Science Laboratory', 'Mechanical Engineering Lab', 'Medical Sciences Building', 'Micro & Nanotechnology Lab', 'Mumford Hall', 'Music Building', 'National Soybean Res Ctr', 'Natural History Building', 'Newmark Civil Engineering Bldg', 'Noble Hall', 'Noyes Laboratory', 'Outdoor Space', 'Pennsylvania Lounge Bld - PAR', 'Plant Sciences Laboratory', 'Psychology Building', 'Richmond Studio', 'Roger Adams Laboratory', 'Seitz Materials Research Lab', 'Sidney Lu Mech Engr Bldg', 'Siebel Center for Comp Sci', 'Siebel Center for Design', 'Smith Memorial Hall', 'South Farms', 'Speech & Hearing Science Bldg', 'Spurlock Museum', 'Stock Pavilion', 'Student Dining & Res Program', 'Talbot Laboratory', 'Temple Hoyne Buell Hall', 'Transportation Building', 'Turner Hall', 'Vet Med Basic Sciences Bldg', 'Veterinary Teaching Hospital', 'Weston Hall', 'Wohlers Hall']
+      });
+      </script>
+    <select id="floorselection">
+      <option value="">Select Floor</option>
+      <option value="foreignLanguagesb">Foreign Languages Basement</option>
+      <option value="foreignLanguages1">Foreign Languages Floor 1</option>
+      <option value="foreignLanguages2">Foreign Languages Floor 2</option>
+      <option value="foreignLanguages3">Foreign Languages Floor 3</option>
+      <option value="foreignLanguages4">Foreign Languages Floor 4</option>
+    </select>
+    <div id="foreignLanguagesb" class="floor">
+      <img src="{% static 'floorplans/foreignLanguages/foreignLanguagesb.PNG'%}" alt="Foreign Languages Basement" usemap="#foreignLanguagesbmap"/>
+      <map name="foreignLanguagesbmap">
+          <area alt="G96" title="G96" coords="256,74,378,249" shape="rect" onclick="fillOutRoom('Foreign Languages Building', 'G96');">
+          <area alt="G27" title="G27" coords="382,75,502,254" shape="rect" onclick="fillOutRoom('Foreign Languages Building', 'G27');">
+          <area alt="G23" title="G23" coords="505,75,631,254" shape="rect" onclick="fillOutRoom('Foreign Languages Building', 'G23');">
+          <area alt="G17" title="G17" coords="635,77,756,257" shape="rect" onclick="fillOutRoom('Foreign Languages Building', 'G17');">
+          <area alt="G13" title="G13" coords="757,73,880,255" shape="rect" onclick="fillOutRoom('Foreign Languages Building', 'G13');">
+          <area alt="G7" title="G7" coords="886,75,1006,257" shape="rect" onclick="fillOutRoom('Foreign Languages Building', 'G7');">
+          <area alt="G3" title="G3" coords="1012,75,1140,257" shape="rect" onclick="fillOutRoom('Foreign Languages Building', 'G3');">
+          <area alt="G8" title="G8" coords="597,296,799,577" shape="rect" onclick="fillOutRoom('Foreign Languages Building', 'G8');">
+          <area alt="G52" title="G52" coords="393,614,473,740" shape="rect" onclick="fillOutRoom('Foreign Languages Building', 'G52');">
+          <area alt="G48" title="G48" coords="477,617,553,739" shape="rect" onclick="fillOutRoom('Foreign Languages Building', 'G48');">
+          <area alt="G46" title="G46" coords="559,615,637,738" shape="rect" onclick="fillOutRoom('Foreign Languages Building', 'G46');">
+          <area alt="G36" title="G36" coords="643,614,723,737" shape="rect" onclick="fillOutRoom('Foreign Languages Building', 'G36');">
+          <area alt="G32" title="G32" coords="727,615,808,738" shape="rect" onclick="fillOutRoom('Foreign Languages Building', 'G32');">
+          <area alt="G30" title="G30" coords="809,612,890,738" shape="rect" onclick="fillOutRoom('Foreign Languages Building', 'G30');">
+          <area alt="G24" title="G24" coords="895,614,976,739" shape="rect" onclick="fillOutRoom('Foreign Languages Building', 'G24');">
+          <area alt="G20" title="G20" coords="980,614,1059,737" shape="rect" onclick="fillOutRoom('Foreign Languages Building', 'G20');">
+          <area alt="G18" title="G18" coords="1063,617,1146,739" shape="rect" onclick="fillOutRoom('Foreign Languages Building', 'G18');">
+      </map>
+    </div>
+    <div id="foreignLanguages1" class="floor">
+      <img src="{% static 'floorplans/foreignLanguages/foreignLanguages1.PNG'%}" alt="Foreign Languages Floor 1" usemap="#foreignLanguages1map"/>
+      <map name="foreignLanguages1map">
+          <area alt="1112" title="1112" coords="592,177,696,248" shape="rect" onclick="fillOutRoom('Foreign Languages Building', '1112');">
+          <area alt="1120" title="1120" coords="703,155,838,246" shape="rect" onclick="fillOutRoom('Foreign Languages Building', '1120');">
+          <area alt="1128" title="1128" coords="841,155,974,246" shape="rect" onclick="fillOutRoom('Foreign Languages Building', '1128');">
+          <area alt="1136" title="1136" coords="980,151,1112,244" shape="rect" onclick="fillOutRoom('Foreign Languages Building', '1136');">
+          <area alt="1140" title="1140" coords="1114,173,1184,283" shape="rect" onclick="fillOutRoom('Foreign Languages Building', '1140');">
+          <area alt="1134" title="1134" coords="981,248,1093,314" shape="rect" onclick="fillOutRoom('Foreign Languages Building', '1134');">
+          <area alt="1126" title="1126" coords="841,252,956,318" shape="rect" onclick="fillOutRoom('Foreign Languages Building', '1126');">
+          <area alt="1118" title="1118" coords="700,250,820,314" shape="rect" onclick="fillOutRoom('Foreign Languages Building', '1118');">
+          <area alt="1110" title="1110" coords="564,250,680,314" shape="rect" onclick="fillOutRoom('Foreign Languages Building', '1110');">
+          <area alt="1048" title="1048" coords="562,407,679,477" shape="rect" onclick="fillOutRoom('Foreign Languages Building', '1048');">
+          <area alt="1040" title="1040" coords="703,410,817,476" shape="rect" onclick="fillOutRoom('Foreign Languages Building', '1040');">
+          <area alt="1032" title="1032" coords="839,409,955,476" shape="rect" onclick="fillOutRoom('Foreign Languages Building', '1032');">
+          <area alt="1024" title="1024" coords="976,409,1091,480" shape="rect" onclick="fillOutRoom('Foreign Languages Building', '1024');">
+          <area alt="1018" title="1018" coords="1116,434,1181,547" shape="rect" onclick="fillOutRoom('Foreign Languages Building', '1018');">
+          <area alt="1022" title="1022" coords="975,482,1114,572" shape="rect" onclick="fillOutRoom('Foreign Languages Building', '1022');">
+          <area alt="1030" title="1030" coords="839,480,973,574" shape="rect" onclick="fillOutRoom('Foreign Languages Building', '1030');">
+          <area alt="1038" title="1038" coords="698,482,835,573" shape="rect" onclick="fillOutRoom('Foreign Languages Building', '1038');">
+          <area alt="1046" title="1046" coords="590,481,695,547" shape="rect" onclick="fillOutRoom('Foreign Languages Building', '1046');">
+      </map>
+    </div>
+    <div id="foreignLanguages2" class="floor">
+      <img src="{% static 'floorplans/foreignLanguages/foreignLanguages2.PNG'%}" alt="Foreign Languages Floor 2" usemap="#foreignLanguages2map"/>
+      <map name="foreignLanguages2map">
+      </map>
+    </div>
+    <div id="foreignLanguages3" class="floor">
+      <img src="{% static 'floorplans/foreignLanguages/foreignLanguages3.PNG'%}" alt="Foreign Languages Floor 3" usemap="#foreignLanguages3map"/>
+      <map name="foreignLanguages3map">
+      </map>
+    </div>
+    <div id="foreignLanguages4" class="floor">
+      <img src="{% static 'floorplans/foreignLanguages/foreignLanguages4.PNG'%}" alt="Foreign Languages Floor 4" usemap="#foreignLanguages4map"/>
+      <map name="foreignLanguages4map">
+      </map>
+    </div>
+    <script>
+      function fillOutRoom(building, room) {
+        document.getElementById('id_Building').value = building;
+        document.getElementById('id_Room').value = room;
+        document.forms[0].submit();
+      }
+    </script>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src= "{% static 'imageMapResizer.min.js' %}"></script>
+    <script type="text/javascript">
+      imageMapResize();
+    </script>
+    <script>
+      // https://codeamend.com/blog/show-hide-div-based-on-dropdown-selected-using-jquery/#:~:text=If%20you%20want%20to%20hide,of%20the%20selected%20dropdown%20option.
+      $(document).ready(function() {
+          $('#floorselection').bind('change', function() {
+            $(".floor").hide();
+            $("#" + $(this).val()).show();
+          });
+          $('#floorselection').trigger('change');
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  </body>
+</html>
