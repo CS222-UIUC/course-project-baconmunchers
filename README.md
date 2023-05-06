@@ -34,7 +34,7 @@ pip install django-autocomplete-light
 
 To run the server, run type the following command:
 ```
-python manage.py runserver
+python3 manage.py runserver
 ```
 
 Then in a brower, enter the following url:
