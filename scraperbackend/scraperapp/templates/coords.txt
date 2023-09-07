@@ -1,0 +1,15 @@
+<map name="image-map">
+</map>
+<map name="image-map">
+    <area target="" alt="1024" title="1024" href="" coords="52,83,316,371" shape="rect">
+    <area target="" alt="1006" title="1006" href="" coords="861,85,1070,376" shape="rect">
+    <area target="" alt="1007" title="1007" href="" coords="1073,82,1283,369" shape="rect">
+</map>
+<map name="image-map">
+    <area target="" alt="2006" title="2006" href="" coords="987,41,1223,380" shape="rect">
+    <area target="" alt="2007" title="2007" href="" coords="1223,43,1471,373" shape="rect">
+    <area target="" alt="2012" title="2012" href="" coords="1266,466,1477,632" shape="rect">
+</map>
+<map name="image-map">
+    <area target="" alt="3026" title="3026" href="" coords="64,51,346,377" shape="rect">
+</map>
