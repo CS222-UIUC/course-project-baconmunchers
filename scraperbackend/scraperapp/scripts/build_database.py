@@ -1,7 +1,7 @@
 """Script that runs within the Django context to clear and repopulate the database"""
 import re
 import json
-# from time import perf_counter
+from time import perf_counter
 import requests
 from bs4 import BeautifulSoup
 from scraperapp.models import ClassInfo #This doesn't work right now
@@ -9,8 +9,8 @@ from scraperapp.models import ClassInfo #This doesn't work right now
 def get_class_links():
     """Function that gets links for classes from Course Explorer"""
     course_explorer = 'https://courses.illinois.edu'
-    subdir = '/schedule/2023/spring'
-
+    subdir = '/schedule/2024/spring' # changed this
+    print("changed to 2024")
 	#Parse through the course subjects page for all subject page links
     subjects_page_soup = BeautifulSoup(requests.get(course_explorer + subdir, timeout=10).text, 'html.parser')
     subjects_page_links = [str(i.get('href')) for i in subjects_page_soup.find_all('a')]
@@ -89,7 +89,7 @@ def input_into_SQLite_database(section):
 
 def run():
     """Django convention for running scripts"""
-    # t0 = perf_counter()
+    t0 = perf_counter()
     get_class_links()
     classes = {}
     # remove all existing class info objects
@@ -102,16 +102,16 @@ def run():
             classes[subject_code] = [file.readline()[:-1] for _ in range(int(class_count))]
             print(subject_code, class_count)
 
-    # # clear ClassSections.txt
-    # with open("ClassSections.txt",'w', encoding='utf-8') as file:
-    #     pass
-    # # input every class section into MySQL Database
-    # # input every class section into SQLite Database
-    # for subject_code, links in classes.items():
-    #     print(subject_code)
-    #     for link in links:
-    #         sections = get_sections_from_class(link)
-    #         for section in sections:
-    #             input_into_SQLite_database(section)
-    # t1 = perf_counter()
-    # print(t1 - t0)
+    # clear ClassSections.txt
+    with open("ClassSections.txt",'w', encoding='utf-8') as file:
+        pass
+    # input every class section into MySQL Database
+    # input every class section into SQLite Database
+    for subject_code, links in classes.items():
+        print(subject_code)
+        for link in links:
+            sections = get_sections_from_class(link)
+            for section in sections:
+                input_into_SQLite_database(section)
+    t1 = perf_counter()
+    print(t1 - t0)
